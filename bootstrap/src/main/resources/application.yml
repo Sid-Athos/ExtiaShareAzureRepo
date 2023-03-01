@@ -9,16 +9,16 @@ spring:
       ddl-auto: update
     properties:
       hibernate:
-        dialect: org.hibernate.dialect.PostgreSQLDialect
+        dialect: org.hibernate.dialect.MySQLDialect
   datasource:
-    driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://34.163.151.196:5432/extia-hackathon-4a
-    username: postgres
-    password: extiahackaton
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://51.38.190.134:3306/extia
+    username: app
+    password: BabyT3@cher
     hikari:
       connection-timeout: 30000
       minimum-idle: 1
-      maximum-pool-size: 5
+      maximum-pool-size: 10
       idle-timeout: 60000
       max-lifetime: 1800000
       pool-name: extiashare-hikari-pool

@@ -19,7 +19,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="ExtiaShareAPI" options="" />
+      <module name="ExtiaShareAPI" options="-parameters" />
       <module name="bootstrap" options="-parameters" />
       <module name="client" options="-parameters" />
       <module name="domain" options="-parameters" />
