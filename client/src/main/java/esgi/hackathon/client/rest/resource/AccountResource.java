@@ -1,17 +1,18 @@
 package esgi.hackathon.client.rest.resource;
 
-import io.vavr.collection.List;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.UUID;
 
 
 @RestController
 @RequiredArgsConstructor
 @RequestMapping(path = "/account")
 public class AccountResource {
+
+    @GetMapping(path = "/findAll")
+    public String findAllAccount() {
+        return "Working";
+    }
 /*
     private final AccountCreatorApi accountCreatorApi;
 
