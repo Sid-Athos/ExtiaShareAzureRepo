@@ -34,4 +34,6 @@ public class StocksEntity {
     @Column(nullable = false)
     private Long size = 1L;
 
+
+
 }
