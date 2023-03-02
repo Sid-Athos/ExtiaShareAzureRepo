@@ -15,4 +15,6 @@ public interface AccountFinderApi {
 
     Option<Account> findByMailAddressAndPassword(String email, String password);
 
+    Option<Account> findByMailAddress(String email);
+
 }
