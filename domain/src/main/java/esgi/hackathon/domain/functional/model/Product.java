@@ -3,20 +3,18 @@ package esgi.hackathon.domain.functional.model;
 import lombok.Builder;
 import lombok.Value;
 
-import java.util.Date;
+import java.util.Set;
 
 @Value
 @Builder
-public class Stock {
+public class Product {
 
     Long id;
 
-    Product product;
+    String name;
 
-    Company company;
+    String description;
 
-    Date expirationDate;
-
-    Long size;
+    Set<Category> categoryEntitySet;
 
 }

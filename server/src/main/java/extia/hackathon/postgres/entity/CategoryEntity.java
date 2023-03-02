@@ -13,14 +13,14 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-@Table(name="CATEGORY")
+@Table(name="CATEGORIES")
 public class CategoryEntity implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Long id;
+    private Long id;
 
     @Column(unique = true, nullable = false, length=32)
-    public String description;
+    private String name;
 
 }

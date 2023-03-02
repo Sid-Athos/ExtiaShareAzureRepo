@@ -12,7 +12,7 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-@Table(name="ACCOUNT")
+@Table(name="ACCOUNTS")
 public class AccountEntity implements Serializable {
 
     @Id

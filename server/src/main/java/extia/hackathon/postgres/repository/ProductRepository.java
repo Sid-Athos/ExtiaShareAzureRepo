@@ -1,4 +1,4 @@
-package extia.hackathon.postgres.rapositories;
+package extia.hackathon.postgres.repository;
 
 import extia.hackathon.postgres.entity.ProductEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
