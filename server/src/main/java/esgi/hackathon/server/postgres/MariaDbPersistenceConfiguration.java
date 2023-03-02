@@ -7,9 +7,9 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @Configuration
-@EnableJpaRepositories(basePackages = "extia.hackathon.postgres.repository")
-@EntityScan(basePackages = "extia.hackathon.postgres.entity")
-@ComponentScan(basePackages = "extia.hackathon.postgres.adapters")
+@EnableJpaRepositories(basePackages = "esgi.hackathon.server.postgres.repository")
+@EntityScan(basePackages = "esgi.hackathon.server.postgres.entity")
+@ComponentScan(basePackages = "esgi.hackathon.server.postgres.adapters")
 @PropertySource("classpath:persistence.properties")
 public class MariaDbPersistenceConfiguration {
 }
