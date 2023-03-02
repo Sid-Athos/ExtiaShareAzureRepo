@@ -41,6 +41,6 @@ public class CompanyPersistenceAdapter implements CompanyPersistenceSpi {
 
     @Override
     public Option<Company> findById(Long id) {
-        return repository.findAccountEntityById(id).map(CompanyEntityMapper::toDomain);
+        return repository.findCompanyEntityById(id).map(CompanyEntityMapper::toDomain);
     }
 }

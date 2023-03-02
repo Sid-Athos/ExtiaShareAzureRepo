@@ -1,13 +1,13 @@
 package extia.hackathon.postgres.mapper;
 
 import esgi.hackathon.domain.functional.model.Product;
-import extia.hackathon.postgres.entity.ProductEntity;
+import extia.hackathon.postgres.entity.ProductsEntity;
 
 import java.util.stream.Collectors;
 
 public interface ProductEntityMapper {
 
-    static Product toDomain(ProductEntity entity) {
+    static Product toDomain(ProductsEntity entity) {
         return Product.builder()
                 .id(entity.getId())
                 .name(entity.getName())
@@ -16,9 +16,9 @@ public interface ProductEntityMapper {
                 .build();
     }
 
-    static ProductEntity fromDomain(Product domain) {
+    static ProductsEntity fromDomain(Product domain) {
         System.out.println("Creation ProductEntity");
-        return ProductEntity.builder()
+        return ProductsEntity.builder()
                 .id(domain.getId())
                 .name(domain.getName())
                 .description(domain.getDescription())

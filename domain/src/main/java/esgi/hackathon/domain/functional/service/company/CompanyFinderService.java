@@ -14,7 +14,6 @@ public class CompanyFinderService implements CompanyFinderApi {
 
     private final CompanyPersistenceSpi spi;
 
-
     @Override
     public List<Company> findAll() {
         return spi.findAll();

@@ -1,9 +1,5 @@
 package extia.hackathon.postgres.mapper;
 
-import esgi.hackathon.domain.functional.model.Company;
-import esgi.hackathon.domain.functional.model.Stock;
-import extia.hackathon.postgres.entity.StockEntity;
-
 public interface StockEntityMapper {
 
     /**

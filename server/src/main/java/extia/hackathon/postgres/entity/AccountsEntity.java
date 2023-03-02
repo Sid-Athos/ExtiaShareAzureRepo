@@ -12,7 +12,6 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-@Table(name="ACCOUNTS")
 public class AccountsEntity implements Serializable {
 
     @Id
@@ -20,7 +19,7 @@ public class AccountsEntity implements Serializable {
     @Column(name = "ID", nullable = false)
     private Long id;
 
-    @Column(name = "ID_NFC", unique = true, nullable = false, length=32)
+    @Column(name = "ID_NFC", unique = true, nullable = false, length=50)
     private String idNFC;
 
     @Column(name="EMAIL", unique = true, nullable = false, length=50)
@@ -29,8 +28,8 @@ public class AccountsEntity implements Serializable {
     @Column(name="PASSWORD", nullable = false)
     private String password;
 
-    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
     @JoinColumn(name = "COMPANY_ID")
-    private CompanyEntity company;
+    private CompaniesEntity company;
 
 }

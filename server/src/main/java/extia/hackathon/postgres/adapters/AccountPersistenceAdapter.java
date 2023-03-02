@@ -48,6 +48,7 @@ public class AccountPersistenceAdapter implements AccountPersistenceSpi {
 
     @Override
     public Option<Account> findByMailAddressAndPassword(String email, String password) {
-        return repository.findByMailAddressAndPassword(email, password).map(AccountEntityMapper::toDomain);
+        return repository.findByMailAddressAndPassword(email, password)
+                .map(AccountEntityMapper::toDomain);
     }
 }

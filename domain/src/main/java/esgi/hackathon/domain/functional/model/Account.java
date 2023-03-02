@@ -4,14 +4,17 @@ import lombok.Builder;
 import lombok.Value;
 import lombok.With;
 
+import java.util.UUID;
+
 @Value
 @Builder
 public class Account {
 
     Long id;
 
+    @Builder.Default
     @With
-    String idNFC;
+    String idNFC = UUID.randomUUID().toString();
 
     @With
     String mailAddress;
@@ -22,7 +25,8 @@ public class Account {
     @With
     String logo;
 
-    int score;
+    @Builder.Default
+    int score = 0;
 
     Company company;
 

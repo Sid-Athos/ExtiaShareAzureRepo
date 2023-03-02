@@ -1,7 +1,13 @@
 package esgi.hackathon.client.rest.resource;
 
+import esgi.hackathon.client.rest.dto.AccountFindRequest;
+import esgi.hackathon.domain.functional.model.Account;
+import esgi.hackathon.domain.ports.in.AccountFinderApi;
+import io.vavr.control.Option;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 
 @RestController
@@ -9,23 +15,14 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping(path = "/account")
 public class AccountResource {
 
-    @GetMapping(path = "/findAll")
-    public String findAllAccount() {
-        return "Working";
-    }
-/*
-    private final AccountCreatorApi accountCreatorApi;
-
     private final AccountFinderApi accountFinderApi;
 
-
-    @PostMapping(path = "/create")
-    public ResponseEntity<Object> createAccount(@RequestBody AccountCreationRequest request) {
-        return accountCreatorApi
-                .create(accountCreationToDomain(request))
-                .map(AccountDtoMapper::toDto)
-                .fold(ResponseEntity.badRequest()::body, ResponseEntity::ok);
+    @GetMapping(path = "/find")
+    public Option<Account> find(@RequestBody AccountFindRequest request) {
+        return accountFinderApi
+                .findByMailAddressAndPassword(request.mailAddress(), request.password());
     }
+/*
 
     @GetMapping(path = "/find_all")
     public List<Object> findAllAccount() {
