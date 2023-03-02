@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static io.vavr.API.Left;
+
 
 @CrossOrigin(origins = "*")
 @RestController
@@ -32,10 +34,20 @@ public class CompanyResource {
 
     @GetMapping
     public List<Object> findAllCompany() {
-        return companyFinderApi.findAll().stream()
+        return companyFinderApi
+                .findAll()
+                .stream()
                 .map(CompanyDtoMapper::toDto)
                 .collect(Collectors.toList());
 
+    }
+
+    @GetMapping(path = "/find/{company_id}")
+    public ResponseEntity<Object> findById(@PathVariable("company_id") Long companyId) {
+        return companyFinderApi
+                .findById(companyId)
+                .map(CompanyDtoMapper::toDto)
+                .fold(ResponseEntity.badRequest()::body, ResponseEntity::ok);
     }
 
     @PostMapping(path = "/create")

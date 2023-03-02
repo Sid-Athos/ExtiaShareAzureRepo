@@ -49,7 +49,7 @@ public class AccountResource {
     @DeleteMapping(path = "/{account_id}/withdraw/")
     public void withdraw(@PathVariable("account_id") Long accountId, @RequestBody AccountWithdrawProductRequest request) {
 
-        accountDepositProductApi.withdraw(accountId, ProductDtoMapper.productWithdrawToDomain(request));
+        //accountDepositProductApi.withdraw(accountId, ProductDtoMapper.productWithdrawToDomain(request));
 
     }
 

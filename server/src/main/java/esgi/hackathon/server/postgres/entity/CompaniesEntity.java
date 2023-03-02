@@ -23,9 +23,6 @@ public class CompaniesEntity implements Serializable {
     @Column(name = "COMPANY_NAME", unique = true, nullable = false, length = 32)
     private String name;
 
-    @Column(nullable = false, length = 60, name="STOCK_LOCATION")
-    private String stockLocation;
-
     @OneToMany(cascade = CascadeType.ALL)
     private List<ContainerEntity> containersInCompany;
 

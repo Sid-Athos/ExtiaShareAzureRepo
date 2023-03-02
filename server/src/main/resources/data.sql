@@ -1,4 +1,3 @@
-INSERT INTO COMPANIES(ID, COMPANY_NAME, STOCK_LOCATION) VALUES (default, 'Extia','3ème étage salle 24');
 
 INSERT INTO CATEGORIES(ID, NAME) VALUES (default, 'Vegan');
 INSERT INTO CATEGORIES(ID, NAME) VALUES (default, 'Gluten free');

@@ -12,10 +12,8 @@ import java.util.List;
 
 @Repository
 public interface ContainerRepository extends JpaRepository<ContainerEntity, Long> {
-/*
-    @Query("SELECT 100 - COUNT(stock.id) FROM STOCKS stock")
-    int getAvailablePlacesInStock();
 
+    /*
     List<ContainerEntity> findAllByCompany(CompaniesEntity company);
     */
 }
