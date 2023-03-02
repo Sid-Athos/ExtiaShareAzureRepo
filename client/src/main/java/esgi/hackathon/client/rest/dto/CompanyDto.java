@@ -7,7 +7,7 @@ import static com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility.ANY;
 
 @JsonAutoDetect(fieldVisibility = ANY)
 public record CompanyDto(
-    Long companyId,
+    Long id,
     String name
 ) {
 
