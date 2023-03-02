@@ -2,8 +2,10 @@ package esgi.hackathon.domain.functional.model;
 
 import lombok.Builder;
 import lombok.Value;
+import lombok.With;
 
 import java.util.Set;
+
 
 @Value
 @Builder
@@ -15,6 +17,8 @@ public class Product {
 
     String description;
 
-    Set<Category> categoryEntitySet;
+    @With
+    @Builder.Default
+    Set<Category> categoryEntitySet = Set.of();
 
 }
