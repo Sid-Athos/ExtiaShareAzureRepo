@@ -11,7 +11,6 @@ import java.util.List;
 @Repository
 public interface StockRepository extends JpaRepository<StoredProductsEntity, Long> {
 
-
     @Query("SELECT 100 - COUNT(stock.id) FROM STOCKS stock")
     int getAvailablePlacesInStock();
 }
