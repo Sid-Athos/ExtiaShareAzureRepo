@@ -15,7 +15,7 @@ public class ProductEntity implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long productId;
 
     @OneToMany
     @Column(unique = true, nullable = false, length=32)
@@ -24,7 +24,5 @@ public class ProductEntity implements Serializable {
     @Column(nullable = false, length=32)
     private String description;
 
-    @ManyToMany(mappedBy = "productId")
-    private List<StockEntity> collectionCardList;
 
 }

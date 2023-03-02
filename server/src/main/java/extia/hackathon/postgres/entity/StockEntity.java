@@ -22,12 +22,12 @@ public class StockEntity {
     @ManyToOne
     @MapsId("productId")
     @JoinColumn(name = "PRODUCT_ID")
-    Long productId;
+    ProductEntity productId;
 
     @ManyToOne
     @MapsId("companyId")
     @JoinColumn(name = "COMPANY_ID")
-    Long companyId;
+    CompanyEntity companyId;
 
     @Column(nullable = false)
     Date expirationDate;

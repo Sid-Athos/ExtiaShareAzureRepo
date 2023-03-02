@@ -9,24 +9,18 @@ public interface CompanyEntityMapper {
 
     static Company toDomain(CompanyEntity entity) {
         return Company.builder()
-                .id(entity.getId())
+                .id(entity.getCompanyId())
                 .name(entity.getName())
-                .stocksCollection(entity.getStocksCollection()
-                        .stream()
-                        .map(StockEntityMapper::toDomain)
-                        .collect(Collectors.toList()))
+
                 .build();
     }
 
     static CompanyEntity fromDomain(Company domain) {
         System.out.println("Creation CompanyEntity");
         return CompanyEntity.builder()
-                .id(domain.getId())
+                .companyId(domain.getId())
                 .name(domain.getName())
-                .stocksCollection(domain.getStocksCollection()
-                        .stream()
-                        .map(StockEntityMapper::fromDomain)
-                        .collect(Collectors.toList()))
+
                 .build();
     }
 

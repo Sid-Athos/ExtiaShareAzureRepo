@@ -8,8 +8,7 @@ public interface StockEntityMapper {
     static Stock toDomain(StockEntity entity) {
         return Stock.builder()
                 .id(entity.getId())
-                .companyId(entity.getCompanyId())
-                .productId(entity.getProductId())
+                .productId(entity.getProductId().getProductId())
                 .expirationDate(entity.getExpirationDate())
                 .build();
     }
@@ -18,8 +17,6 @@ public interface StockEntityMapper {
         System.out.println("Creation StockEntity");
         return StockEntity.builder()
                 .id(domain.getId())
-                .companyId(domain.getCompanyId())
-                .productId(domain.getProductId())
                 .expirationDate(domain.getExpirationDate())
                 .build();
     }
