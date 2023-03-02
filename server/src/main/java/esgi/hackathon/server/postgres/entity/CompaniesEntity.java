@@ -20,10 +20,10 @@ public class CompaniesEntity implements Serializable {
     @Column(name = "COMPANY_ID")
     private Long id;
 
-    @Column(name = "COMPANY_NAME", unique = true, nullable = false, length = 32)
+    @Column(name = "NAME", unique = true, nullable = false, length = 32)
     private String name;
 
     @OneToMany(cascade = CascadeType.ALL)
-    private List<ContainerEntity> containersInCompany;
+    private List<ContainersEntity> containersInCompany;
 
 }

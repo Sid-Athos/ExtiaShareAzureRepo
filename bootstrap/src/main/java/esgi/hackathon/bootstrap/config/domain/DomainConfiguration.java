@@ -7,11 +7,9 @@ import esgi.hackathon.domain.functional.service.category.CategoryCreatorService;
 import esgi.hackathon.domain.functional.service.category.CategoryFinderService;
 import esgi.hackathon.domain.functional.service.company.*;
 import esgi.hackathon.domain.functional.service.product.ProductFinderService;
+import esgi.hackathon.domain.functional.service.product.StoredProductFinderService;
 import esgi.hackathon.domain.ports.in.*;
-import esgi.hackathon.domain.ports.out.AccountPersistenceSpi;
-import esgi.hackathon.domain.ports.out.CategoryPersistenceSpi;
-import esgi.hackathon.domain.ports.out.CompanyPersistenceSpi;
-import esgi.hackathon.domain.ports.out.ProductPersistenceSpi;
+import esgi.hackathon.domain.ports.out.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -52,5 +50,8 @@ public class DomainConfiguration {
                 accountPersistenceSpi
         );
     }
+
+    @Bean
+    public StoredProductFinderApi storedProductFinderApi(StoredProductPersistenceSpi spi) { return new StoredProductFinderService(spi); }
 
 }

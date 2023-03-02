@@ -37,10 +37,4 @@ public class CompanyFinderService implements CompanyFinderApi {
         return spi.findAll();
     }
 
-    @Override
-    public List<StoredProduct> findAllByCompany(Long companyId) {
-        return spi.findAllByCompany(companyId);
-    }
-
-
 }

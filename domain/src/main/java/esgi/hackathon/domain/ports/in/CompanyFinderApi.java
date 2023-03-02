@@ -14,6 +14,4 @@ public interface CompanyFinderApi {
 
     List<Company> findAll();
 
-    List<StoredProduct> findAllByCompany(Long companyId);
-
 }

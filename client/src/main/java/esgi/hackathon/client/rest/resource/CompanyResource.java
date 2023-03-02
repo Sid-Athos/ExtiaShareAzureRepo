@@ -8,18 +8,13 @@ import esgi.hackathon.client.rest.mapper.AccountDtoMapper;
 import esgi.hackathon.client.rest.mapper.CompanyDtoMapper;
 import esgi.hackathon.client.rest.mapper.ContainerDtoMapper;
 import esgi.hackathon.client.rest.mapper.StoredProductDtoMapper;
-import esgi.hackathon.domain.ports.in.AccountCreatorApi;
-import esgi.hackathon.domain.ports.in.CompanyContainerAdderApi;
-import esgi.hackathon.domain.ports.in.CompanyCreatorApi;
-import esgi.hackathon.domain.ports.in.CompanyFinderApi;
+import esgi.hackathon.domain.ports.in.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.stream.Collectors;
-
-import static io.vavr.API.Left;
 
 
 @CrossOrigin(origins = "*")
@@ -33,6 +28,8 @@ public class CompanyResource {
     private final CompanyContainerAdderApi companyContainerAdderApi;
 
     private final AccountCreatorApi accountCreatorApi;
+
+    private final StoredProductFinderApi storedProductFinderApi;
 
     @GetMapping
     public List<Object> findAllCompany() {
@@ -82,11 +79,11 @@ public class CompanyResource {
                 .fold(ResponseEntity.badRequest()::body, ResponseEntity::ok);
     }
 
-    @GetMapping(path = "/{company_id}/getProductsInContainer")
+    @GetMapping(path = "/{company_id}/products")
     public List<StoredProductDto> addContainer(
             @PathVariable("company_id") Long companyId
     ) {
-        return companyFinderApi.findAllByCompany(companyId)
+        return storedProductFinderApi.findAllByCompany(companyId)
                 .stream()
                 .map(StoredProductDtoMapper::toDto)
                 .collect(Collectors.toList());
