@@ -20,7 +20,7 @@ public class AccountResource {
     private final AccountFinderApi accountFinderApi;
     private final AccountDepositProductApi accountDepositProductApi;
 
-    @GetMapping(path = "/find")
+    @PostMapping(path = "/find")
     public Option<AccountDto> find(@RequestBody AccountFindRequest request) {
         return accountFinderApi
                 .findByMailAddressAndPassword(request.mailAddress(), request.password())
@@ -52,10 +52,10 @@ public class AccountResource {
 
     }
 
-    @GetMapping(path = "/findByMail")
-    public Option<AccountDto> connect(@RequestBody AccountFindRequest request) {
+    @GetMapping(path = "/findByMail/{mailAddress}")
+    public Option<AccountDto> connect(@PathVariable("mailAddress") String mailAddress){
         return accountFinderApi
-                .findByMailAddress(request.mailAddress())
+                .findByMailAddress(mailAddress)
                 .map(AccountDtoMapper::toDto);
     }
 
