@@ -1,11 +1,9 @@
 package esgi.hackathon.client.rest.resource;
 
-import esgi.hackathon.client.rest.dto.AccountDepositRequest;
-import esgi.hackathon.client.rest.dto.AccountDto;
-import esgi.hackathon.client.rest.dto.AccountFindRequest;
-import esgi.hackathon.client.rest.dto.ProductDto;
+import esgi.hackathon.client.rest.dto.*;
 import esgi.hackathon.client.rest.mapper.AccountDtoMapper;
 import esgi.hackathon.client.rest.mapper.ProductDtoMapper;
+import esgi.hackathon.domain.ports.in.AccountDepositProductApi;
 import esgi.hackathon.domain.ports.in.AccountFinderApi;
 import esgi.hackathon.domain.ports.in.ProductFinderApi;
 import io.vavr.control.Option;
@@ -20,7 +18,7 @@ import org.springframework.web.bind.annotation.*;
 public class AccountResource {
 
     private final AccountFinderApi accountFinderApi;
-    //private final AccountDepositApi accountDepositApi;
+    private final AccountDepositProductApi accountDepositProductApi;
     private final ProductFinderApi productFinderApi;
 
     @GetMapping(path = "/find")
@@ -42,25 +40,18 @@ public class AccountResource {
 
 */
     @PostMapping(path = "/{account_id}/deposit/")
-    public void deposit(@PathVariable("account_id") Long accountId, @RequestBody AccountDepositRequest request) {
-        Option<AccountDto> optAccountDto = accountFinderApi.findById(accountId).map(AccountDtoMapper::toDto);
+    public void deposit(@PathVariable("account_id") Long accountId, @RequestBody AccountDepositProductRequest request) {
 
-        if (optAccountDto.isEmpty()){
-            throw new RuntimeException("Account not found");
-        }
-
-        Option<ProductDto> optProductDto = productFinderApi.findById(request.productId()).map(ProductDtoMapper::toDto);
-
-        if (optProductDto.isEmpty()){
-            throw new RuntimeException("Product not found");
-        }
-
-        AccountDto accountDto = optAccountDto.get();
-
-        ProductDto productDto = optProductDto.get();
-
-        //accountDepositApi.deposit();
+        accountDepositProductApi.deposit(accountId, ProductDtoMapper.productCreationToDomain(request), request.containerId());
 
     }
+
+    @DeleteMapping(path = "/{account_id}/withdraw/")
+    public void withdraw(@PathVariable("account_id") Long accountId, @RequestBody AccountWithdrawProductRequest request) {
+
+        accountDepositProductApi.withdraw(accountId, ProductDtoMapper.productWithdrawToDomain(request));
+
+    }
+
 
 }

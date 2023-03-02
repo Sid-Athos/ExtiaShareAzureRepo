@@ -6,8 +6,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import static com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility.ANY;
 
 @JsonAutoDetect(fieldVisibility = ANY)
-public record AccountDepositRequest(
+public record AccountWithdrawProductRequest(
         @JsonProperty("productId") Long productId
 ) {
-
 }
