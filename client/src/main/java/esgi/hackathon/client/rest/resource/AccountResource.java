@@ -22,8 +22,8 @@ public class AccountResource {
         return accountFinderApi
                 .findByMailAddressAndPassword(request.mailAddress(), request.password());
     }
-/*
 
+/*
     @GetMapping(path = "/find_all")
     public List<Object> findAllAccount() {
         return accountFinderApi
@@ -31,25 +31,7 @@ public class AccountResource {
                 .map(AccountDtoMapper::toDto);
     }
 
-    @PostMapping(path = "/{accountId}/open_booster")
-    public ResponseEntity<Object> openBooster(
-            @PathVariable("accountId") UUID accountId,
-            @RequestBody BoosterOpeningRequest request) {
-        return boosterOpenerApi
-                .openBooster(accountId, Booster.valueOf(request.booster()))
-                .map(AccountDtoMapper::toDto)
-                .fold(ResponseEntity.badRequest()::body, ResponseEntity::ok);
-    }
 
-    @PostMapping(path = "/{accountId}/{cardId}/fight")
-    public ResponseEntity<Object> fight(
-            @PathVariable("accountId") UUID accountId,
-            @PathVariable("cardId") UUID cardId,
-            @RequestBody FightRequest request) {
-        return fightApi
-                .fight(accountId, cardId, request.opponent_account_id(), request.opponent_card_id())
-                .map(AccountDtoMapper::toDto)
-                .fold(ResponseEntity.badRequest()::body, ResponseEntity::ok);
-    }
+
 */
 }

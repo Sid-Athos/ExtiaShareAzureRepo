@@ -1,14 +1,13 @@
 package esgi.hackathon.bootstrap.config.domain;
 
-import esgi.hackathon.domain.functional.service.company.AccountCreatorService;
-import esgi.hackathon.domain.functional.service.company.AccountFinderService;
-import esgi.hackathon.domain.functional.service.company.CompanyCreatorService;
-import esgi.hackathon.domain.functional.service.company.CompanyFinderService;
-import esgi.hackathon.domain.ports.in.AccountCreatorApi;
-import esgi.hackathon.domain.ports.in.AccountFinderApi;
-import esgi.hackathon.domain.ports.in.CompanyCreatorApi;
-import esgi.hackathon.domain.ports.in.CompanyFinderApi;
+import esgi.hackathon.domain.functional.service.account.AccountCreatorService;
+import esgi.hackathon.domain.functional.service.account.AccountFinderService;
+import esgi.hackathon.domain.functional.service.category.CategoryCreatorService;
+import esgi.hackathon.domain.functional.service.category.CategoryFinderService;
+import esgi.hackathon.domain.functional.service.company.*;
+import esgi.hackathon.domain.ports.in.*;
 import esgi.hackathon.domain.ports.out.AccountPersistenceSpi;
+import esgi.hackathon.domain.ports.out.CategoryPersistenceSpi;
 import esgi.hackathon.domain.ports.out.CompanyPersistenceSpi;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -27,5 +26,11 @@ public class DomainConfiguration {
 
     @Bean
     public AccountFinderApi accountFinderApi(AccountPersistenceSpi spi) { return new AccountFinderService(spi); }
+
+    @Bean
+    public CategoryCreatorApi categoryCreatorApi(CategoryPersistenceSpi spi) { return new CategoryCreatorService(spi); }
+
+    @Bean
+    public CategoryFinderApi categoryFinderApi(CategoryPersistenceSpi spi) { return new CategoryFinderService(spi); }
 
 }

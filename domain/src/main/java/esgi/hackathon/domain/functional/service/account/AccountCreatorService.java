@@ -1,14 +1,10 @@
-package esgi.hackathon.domain.functional.service.company;
+package esgi.hackathon.domain.functional.service.account;
 
 import esgi.hackathon.domain.ApplicationError;
 import esgi.hackathon.domain.functional.model.Account;
-import esgi.hackathon.domain.functional.model.Company;
 import esgi.hackathon.domain.functional.service.validation.AccountValidator;
-import esgi.hackathon.domain.functional.service.validation.CompanyValidator;
 import esgi.hackathon.domain.ports.in.AccountCreatorApi;
-import esgi.hackathon.domain.ports.in.CompanyCreatorApi;
 import esgi.hackathon.domain.ports.out.AccountPersistenceSpi;
-import esgi.hackathon.domain.ports.out.CompanyPersistenceSpi;
 import io.vavr.control.Either;
 import lombok.RequiredArgsConstructor;
 

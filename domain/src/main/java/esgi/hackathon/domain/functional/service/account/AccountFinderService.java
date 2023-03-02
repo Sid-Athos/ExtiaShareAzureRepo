@@ -1,4 +1,4 @@
-package esgi.hackathon.domain.functional.service.company;
+package esgi.hackathon.domain.functional.service.account;
 
 import esgi.hackathon.domain.functional.model.Account;
 import esgi.hackathon.domain.ports.in.AccountFinderApi;
