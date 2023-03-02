@@ -5,7 +5,7 @@ import lombok.*;
 import javax.persistence.*;
 import java.util.Date;
 
-@Entity(name="STOCKS")
+@Entity(name="STORED_PRODUCTS")
 @Getter
 @Setter
 @Builder
@@ -14,7 +14,7 @@ public class StoredProductsEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "COLLECTION_CARD_ID")
+    @Column(name = "STORED_PRODUCT_ID")
     private Long id;
 
     @ManyToOne
@@ -23,7 +23,11 @@ public class StoredProductsEntity {
 
     @ManyToOne
     @JoinColumn(name = "CONTAINER_ID")
-    private ContainerEntity container;
+    private ContainersEntity container;
+
+    @ManyToOne
+    @JoinColumn(name = "ACCOUNT_ID")
+    private AccountsEntity account;
 
     @Column(nullable = false)
     private Date expirationDate;

@@ -17,6 +17,7 @@ public class ProductsEntity implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "PRODUCT_ID", nullable = false)
     private Long id;
 
     @Column(nullable = false, length=50)

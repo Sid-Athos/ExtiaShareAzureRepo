@@ -3,7 +3,7 @@ package esgi.hackathon.server.postgres.mapper;
 import esgi.hackathon.domain.functional.model.StoredProduct;
 import esgi.hackathon.server.postgres.entity.StoredProductsEntity;
 
-public interface StockEntityMapper {
+public interface StoredProductEntityMapper {
 
     static StoredProduct toDomain(StoredProductsEntity entity) {
         return StoredProduct.builder()

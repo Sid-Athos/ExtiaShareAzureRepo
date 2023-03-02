@@ -5,7 +5,7 @@ import esgi.hackathon.domain.functional.model.Company;
 import esgi.hackathon.domain.functional.model.StoredProduct;
 import esgi.hackathon.domain.ports.out.CompanyPersistenceSpi;
 import esgi.hackathon.server.postgres.mapper.CompanyEntityMapper;
-import esgi.hackathon.server.postgres.mapper.StockEntityMapper;
+import esgi.hackathon.server.postgres.mapper.StoredProductEntityMapper;
 import esgi.hackathon.server.postgres.repository.CompanyRepository;
 import esgi.hackathon.server.postgres.repository.StoredProductRepository;
 import io.vavr.control.Either;
@@ -24,8 +24,6 @@ import static io.vavr.API.Try;
 public class CompanyPersistenceAdapter implements CompanyPersistenceSpi {
 
     private final CompanyRepository repository;
-
-    private final StoredProductRepository storedProductRepository;
 
     @Override
     public Either<ApplicationError, Company> save(Company o) {
@@ -50,11 +48,5 @@ public class CompanyPersistenceAdapter implements CompanyPersistenceSpi {
     }
 
 
-    @Override
-    public List<StoredProduct> findAllByCompany(Long companyId) {
-        return storedProductRepository.findAllByCompany(companyId)
-                .stream()
-                .map(StockEntityMapper::toDomain)
-                .collect(Collectors.toList());
-    }
+
 }

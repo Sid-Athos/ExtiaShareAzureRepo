@@ -1,22 +1,20 @@
 package esgi.hackathon.server.postgres.mapper;
 
-import esgi.hackathon.domain.functional.model.Company;
 import esgi.hackathon.domain.functional.model.Container;
-import esgi.hackathon.server.postgres.entity.CompaniesEntity;
-import esgi.hackathon.server.postgres.entity.ContainerEntity;
+import esgi.hackathon.server.postgres.entity.ContainersEntity;
 
 public interface ContainerEntityMapper {
 
-    static Container toDomain(ContainerEntity entity) {
+    static Container toDomain(ContainersEntity entity) {
         return Container.builder()
                 .id(entity.getId())
                 .size(entity.getSize())
                 .build();
     }
 
-    static ContainerEntity fromDomain(Container domain) {
+    static ContainersEntity fromDomain(Container domain) {
         System.out.println("Creation ContainerEntity");
-        return ContainerEntity.builder()
+        return ContainersEntity.builder()
                 .id(domain.getId())
                 .size(domain.getSize())
                 .build();

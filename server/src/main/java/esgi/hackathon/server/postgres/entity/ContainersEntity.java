@@ -14,7 +14,7 @@ import java.util.List;
 @Builder
 
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-public class ContainerEntity {
+public class ContainersEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
