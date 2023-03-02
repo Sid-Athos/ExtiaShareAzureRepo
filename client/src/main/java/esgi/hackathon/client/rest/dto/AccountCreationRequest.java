@@ -7,6 +7,6 @@ import static com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility.ANY;
 
 @JsonAutoDetect(fieldVisibility = ANY)
 public record AccountCreationRequest(
-        @JsonProperty("pseudo") String mailAddress,
-        @JsonProperty("pseudo") String password
+        @JsonProperty("mailAddress") String mailAddress,
+        @JsonProperty("password") String password
 )  {}

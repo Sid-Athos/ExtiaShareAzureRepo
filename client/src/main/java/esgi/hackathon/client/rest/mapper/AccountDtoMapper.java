@@ -14,7 +14,7 @@ public interface AccountDtoMapper {
                 account.getPassword(),
                 account.getLogo(),
                 account.getScore(),
-                CompanyDtoMapper.fromDomain(account.getCompany())
+                CompanyDtoMapper.toDto(account.getCompany())
         );
     }
 
