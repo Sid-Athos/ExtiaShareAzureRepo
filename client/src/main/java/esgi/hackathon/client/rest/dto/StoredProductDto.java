@@ -14,6 +14,7 @@ public record StoredProductDto(
         Long id,
         ProductDto product,
         ContainerDto container,
+        AccountDto account,
         Date expirationDate,
         int size
 ) {
