@@ -7,8 +7,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
 public interface AccountFinderApi {
+
+    Option<Account> findById(Long id);
 
     List<Account> findAll();
 

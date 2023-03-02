@@ -15,6 +15,11 @@ public class AccountFinderService implements AccountFinderApi {
     private final AccountPersistenceSpi spi;
 
     @Override
+    public Option<Account> findById(Long id) {
+        return spi.findById(id);
+    }
+
+    @Override
     public List<Account> findAll() {
         return spi.findAll();
     }
