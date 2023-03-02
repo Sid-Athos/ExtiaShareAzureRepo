@@ -3,6 +3,7 @@ package esgi.hackathon.client.rest.mapper;
 import esgi.hackathon.client.rest.dto.AccountCreationRequest;
 import esgi.hackathon.client.rest.dto.AccountDto;
 import esgi.hackathon.domain.functional.model.Account;
+import esgi.hackathon.domain.functional.model.Company;
 
 public interface AccountDtoMapper {
 
@@ -18,10 +19,11 @@ public interface AccountDtoMapper {
         );
     }
 
-    static Account accountCreationToDomain(AccountCreationRequest request) {
+    static Account accountCreationToDomain(Long companyId, AccountCreationRequest request) {
         return Account.builder()
                 .password(request.password())
                 .mailAddress(request.mailAddress())
+                .company(Company.builder().id(companyId).build())
                 .build();
     }
 
