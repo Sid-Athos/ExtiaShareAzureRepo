@@ -6,9 +6,14 @@ import esgi.hackathon.client.rest.mapper.AccountDtoMapper;
 import esgi.hackathon.client.rest.mapper.CompanyDtoMapper;
 import esgi.hackathon.domain.ports.in.AccountCreatorApi;
 import esgi.hackathon.domain.ports.in.CompanyCreatorApi;
+import esgi.hackathon.domain.ports.in.CompanyFinderApi;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.stream.Collectors;
+
 
 @RestController
 @RequiredArgsConstructor
@@ -16,12 +21,16 @@ import org.springframework.web.bind.annotation.*;
 public class CompanyResource {
 
     private final CompanyCreatorApi companyCreatorApi;
+    private final CompanyFinderApi companyFinderApi;
 
     private final AccountCreatorApi accountCreatorApi;
 
     @GetMapping
-    public String findAllCompany() {
-        return "Working";
+    public List<Object> findAllCompany() {
+        return companyFinderApi.findAll().stream()
+                .map(CompanyDtoMapper::toDto)
+                .collect(Collectors.toList());
+
     }
 
     @PostMapping(path = "/create")
