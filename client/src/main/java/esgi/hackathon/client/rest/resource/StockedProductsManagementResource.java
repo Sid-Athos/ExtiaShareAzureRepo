@@ -1,8 +1,10 @@
 package esgi.hackathon.client.rest.resource;
 
 import esgi.hackathon.client.rest.dto.ContainerDto;
+import esgi.hackathon.client.rest.dto.CreateStoredProductRequest;
 import esgi.hackathon.client.rest.mapper.ContainerDtoMapper;
 import esgi.hackathon.domain.ports.in.ContainersFinderApi;
+import esgi.hackathon.domain.ports.in.StockCreatorApi;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -13,9 +15,10 @@ import java.util.List;
 public class StockedProductsManagementResource {
 
     private final ContainersFinderApi containersFinderApi;
-
-    public StockedProductsManagementResource(ContainersFinderApi containersFinderApi) {
+    private final StockCreatorApi stockCreatorApi;
+    public StockedProductsManagementResource(ContainersFinderApi containersFinderApi, StockCreatorApi stockCreatorApi) {
         this.containersFinderApi = containersFinderApi;
+        this.stockCreatorApi = stockCreatorApi;
     }
 
     @GetMapping(path = "/find/groupedByLocation/forCompany/{companyId}")
@@ -24,5 +27,10 @@ public class StockedProductsManagementResource {
                 .stream()
                 .map(ContainerDtoMapper::toDto)
                 .toList();
+    }
+
+    @PostMapping(path="/add/{withCompany}/{inLocation}")
+    public void addProductInContainer(@RequestBody CreateStoredProductRequest storedProductRequest){
+        stockCreatorApi.addProductInStock(null);
     }
 }
