@@ -19,7 +19,6 @@ public class AccountResource {
 
     private final AccountFinderApi accountFinderApi;
     private final AccountDepositProductApi accountDepositProductApi;
-    private final ProductFinderApi productFinderApi;
 
     @GetMapping(path = "/find")
     public Option<AccountDto> find(@RequestBody AccountFindRequest request) {
@@ -52,6 +51,14 @@ public class AccountResource {
         //accountDepositProductApi.withdraw(accountId, ProductDtoMapper.productWithdrawToDomain(request));
 
     }
+
+    @GetMapping(path = "/findByMail")
+    public Option<AccountDto> connect(@RequestBody AccountFindRequest request) {
+        return accountFinderApi
+                .findByMailAddress(request.mailAddress())
+                .map(AccountDtoMapper::toDto);
+    }
+
 
 
 }

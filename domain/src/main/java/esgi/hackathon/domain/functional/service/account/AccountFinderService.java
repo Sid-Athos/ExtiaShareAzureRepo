@@ -28,4 +28,9 @@ public class AccountFinderService implements AccountFinderApi {
     public Option<Account> findByMailAddressAndPassword(String email, String password) {
         return spi.findByMailAddressAndPassword(email, password);
     }
+
+    @Override
+    public Option<Account> findByMailAddress(String email) {
+        return spi.findByMailAddress(email);
+    }
 }
