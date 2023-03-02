@@ -21,4 +21,11 @@ public interface CategoryDtoMapper {
                 .build();
     }
 
+    static Category toDomain(CategoryDto categoryDto) {
+        return Category.builder()
+                .id(categoryDto.id())
+                .name(categoryDto.name())
+                .build();
+    }
+
 }
