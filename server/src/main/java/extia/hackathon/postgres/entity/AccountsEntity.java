@@ -5,15 +5,14 @@ import lombok.*;
 import javax.persistence.*;
 import java.io.Serializable;
 
-@Entity
+@Entity(name = "ACCOUNTS")
 @Getter
 @Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-@Table(name="ACCOUNT")
-public class AccountEntity implements Serializable {
+public class AccountsEntity implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

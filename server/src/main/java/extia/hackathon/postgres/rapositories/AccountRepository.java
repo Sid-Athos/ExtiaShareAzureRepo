@@ -1,11 +1,11 @@
 package extia.hackathon.postgres.rapositories;
 
-import extia.hackathon.postgres.entity.AccountEntity;
+import extia.hackathon.postgres.entity.AccountsEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface AccountRepository extends JpaRepository<AccountEntity, Long> {
+public interface AccountRepository extends JpaRepository<AccountsEntity, Long> {
 
-    AccountEntity findByMailAddressAndPassword(String adress, String password);
+    AccountsEntity findByMailAddressAndPassword(String adress, String password);
 }

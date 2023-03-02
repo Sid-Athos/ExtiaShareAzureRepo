@@ -13,8 +13,8 @@ public interface AccountDtoMapper {
                 account.getMailAddress(),
                 account.getPassword(),
                 account.getLogo(),
-                account.getScore(),
-                CompanyDtoMapper.fromDomain(account.getCompany())
+                account.getScore()
+                //CompanyDtoMapper.fromDomain(account.getCompany())
         );
     }
 

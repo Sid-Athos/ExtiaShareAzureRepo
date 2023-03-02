@@ -1,11 +1,11 @@
 package extia.hackathon.postgres.mapper;
 
 import esgi.hackathon.domain.functional.model.Account;
-import extia.hackathon.postgres.entity.AccountEntity;
+import extia.hackathon.postgres.entity.AccountsEntity;
 
 public interface AccountEntityMapper {
 
-    static Account toDomain(AccountEntity entity) {
+    static Account toDomain(AccountsEntity entity) {
         return Account.builder()
                 .id(entity.getId())
                 .idNFC(entity.getIdNFC())
@@ -15,9 +15,9 @@ public interface AccountEntityMapper {
                 .build();
     }
 
-    static AccountEntity fromDomain(Account domain) {
+    static AccountsEntity fromDomain(Account domain) {
         System.out.println("Creation AccountEntity");
-        return AccountEntity.builder()
+        return AccountsEntity.builder()
                 .id(domain.getId())
                 .idNFC(domain.getIdNFC())
                 .mailAddress(domain.getMailAddress())

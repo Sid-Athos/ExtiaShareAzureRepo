@@ -6,14 +6,13 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
 
-@Entity
+@Entity(name ="COMPANIES")
 @Getter
 @Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-@Table(name="COMPANY")
 public class CompanyEntity implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,5 +21,8 @@ public class CompanyEntity implements Serializable {
 
     @Column(name = "COMPANY_NAME", unique = true, nullable = false, length = 32)
     private String name;
+
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.MERGE, mappedBy = "companyId")
+    private List<StockEntity> productsInCompany;
 
 }

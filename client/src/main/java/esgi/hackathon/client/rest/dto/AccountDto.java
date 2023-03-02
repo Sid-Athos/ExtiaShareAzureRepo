@@ -13,7 +13,7 @@ public record AccountDto(
         String mailAddress,
         String password,
         String logo,
-        int score,
-        CompanyDto company
+        int score
+        //CompanyDto company
 ) {
 }

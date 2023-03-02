@@ -5,10 +5,11 @@ import extia.hackathon.postgres.entity.StockEntity;
 
 public interface StockEntityMapper {
 
+    /**
     static Stock toDomain(StockEntity entity) {
         return Stock.builder()
                 .id(entity.getId())
-                .productId(entity.getProductId().getProductId())
+                //.productId(entity.getProductId().getProductId())
                 .expirationDate(entity.getExpirationDate())
                 .build();
     }
@@ -20,5 +21,7 @@ public interface StockEntityMapper {
                 .expirationDate(domain.getExpirationDate())
                 .build();
     }
+
+     */
 
 }

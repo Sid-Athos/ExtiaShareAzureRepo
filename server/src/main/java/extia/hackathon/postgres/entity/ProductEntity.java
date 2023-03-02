@@ -6,7 +6,6 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
-import java.util.Set;
 
 @Getter
 @Setter
@@ -19,10 +18,12 @@ public class ProductEntity implements Serializable {
 
     @OneToMany
     @Column(unique = true, nullable = false, length=32)
-    private Set<CategoryEntity> categoryEntitySet;
+    private List<CategoriesEntity> categoriesEntitySet;
 
     @Column(nullable = false, length=32)
     private String description;
 
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.MERGE, mappedBy = "productId")
+    private List<StockEntity> productStocked;
 
 }
