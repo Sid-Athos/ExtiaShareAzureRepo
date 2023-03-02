@@ -13,9 +13,9 @@ import org.springframework.context.annotation.Configuration;
 public class DomainConfiguration {
 
     @Bean
-    public CompanyCreatorApi companyCreationApi(CompanyPersistenceSpi spi) { return new CompanyCreatorService(spi); }
+    public CompanyCreatorApi companyCreatorApi(CompanyPersistenceSpi spi) { return new CompanyCreatorService(spi); }
 
     @Bean
-    public AccountCreatorApi accountCreationApi(AccountPersistenceSpi spi) { return new AccountCreatorService(spi); }
+    public AccountCreatorApi accountCreatorApi(AccountPersistenceSpi spi) { return new AccountCreatorService(spi); }
 
 }
