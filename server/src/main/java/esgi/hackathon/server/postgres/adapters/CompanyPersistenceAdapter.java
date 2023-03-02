@@ -3,8 +3,10 @@ package esgi.hackathon.server.postgres.adapters;
 import esgi.hackathon.domain.ApplicationError;
 import esgi.hackathon.domain.functional.model.Company;
 import esgi.hackathon.domain.ports.out.CompanyPersistenceSpi;
+import esgi.hackathon.server.postgres.entity.CompaniesEntity;
 import esgi.hackathon.server.postgres.mapper.CompanyEntityMapper;
 import esgi.hackathon.server.postgres.repository.CompanyRepository;
+import esgi.hackathon.server.postgres.repository.StockRepository;
 import io.vavr.control.Either;
 import io.vavr.control.Option;
 import lombok.RequiredArgsConstructor;
@@ -22,6 +24,7 @@ public class CompanyPersistenceAdapter implements CompanyPersistenceSpi {
 
     private final CompanyRepository repository;
 
+    private final StockRepository stockRepository;
     @Override
     public Either<ApplicationError, Company> save(Company o) {
         val entity = CompanyEntityMapper.fromDomain(o);
@@ -41,6 +44,9 @@ public class CompanyPersistenceAdapter implements CompanyPersistenceSpi {
 
     @Override
     public Option<Company> findById(Long id) {
+        var stocks = stockRepository.findAllByCompanyId(CompaniesEntity.builder().id(id).build());
+        var item = repository.findCompanyEntityById(id).getOrNull();
+        item.setProductsInCompany(stocks);
         return repository.findCompanyEntityById(id).map(CompanyEntityMapper::toDomain);
     }
 }

@@ -1,5 +1,6 @@
 package esgi.hackathon.server.postgres.entity;
 
+import esgi.hackathon.domain.functional.model.Container;
 import lombok.*;
 
 import javax.persistence.*;
@@ -26,7 +27,7 @@ public class CompaniesEntity implements Serializable {
     @Column(nullable = false, length = 60, name="STOCK_LOCATION")
     private String stockLocation;
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.MERGE, mappedBy = "companyId")
+    @ManyToMany( mappedBy = "companyId")
     private List<StoredProductsEntity> productsInCompany;
 
 }

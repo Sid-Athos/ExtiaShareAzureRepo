@@ -1,5 +1,6 @@
 package esgi.hackathon.server.postgres.repository;
 
+import esgi.hackathon.server.postgres.entity.CompaniesEntity;
 import esgi.hackathon.server.postgres.entity.StoredProductsEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -13,4 +14,6 @@ public interface StockRepository extends JpaRepository<StoredProductsEntity, Lon
 
     @Query("SELECT 100 - COUNT(stock.id) FROM STOCKS stock")
     int getAvailablePlacesInStock();
+
+    List<StoredProductsEntity> findAllByCompanyId(CompaniesEntity company);
 }

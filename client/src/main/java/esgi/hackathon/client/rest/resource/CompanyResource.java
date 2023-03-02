@@ -45,7 +45,12 @@ public class CompanyResource {
                 .map(CompanyDtoMapper::toDto)
                 .fold(ResponseEntity.badRequest()::body, ResponseEntity::ok);
     }
+/*    @GetMapping(path = "/{company_id}")
+    public List<Object> findById(
+            @PathVariable("company_id") Long companyId) {
+        return companyFinderApi.findById(companyId);
 
+    }*/
     @PostMapping(path = "/{company_id}/create_account")
     public ResponseEntity<Object> createAccount(
             @PathVariable("company_id") Long companyId,

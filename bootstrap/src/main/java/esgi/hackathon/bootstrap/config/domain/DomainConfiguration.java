@@ -38,5 +38,7 @@ public class DomainConfiguration {
     @Bean
     public ProductFinderApi productFinderApi(ProductPersistenceSpi spi) { return new ProductFinderService(spi); }
 
+    @Bean
+    public CompanyContainerAdderApi companyContainerAdderApi(CompanyPersistenceSpi spi) { return new CompanyContainerAdderService(spi); }
 
 }

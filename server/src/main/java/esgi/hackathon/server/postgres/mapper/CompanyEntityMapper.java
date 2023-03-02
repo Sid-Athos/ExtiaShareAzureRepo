@@ -9,6 +9,11 @@ public interface CompanyEntityMapper {
         return Company.builder()
                 .id(entity.getId())
                 .name(entity.getName())
+                .containerList(entity.getProductsInCompany()
+                        .stream()
+                        .map(StockEntityMapper::toDomain)
+                        .collect(Collectors.toList())
+                )
                 .build();
     }
 

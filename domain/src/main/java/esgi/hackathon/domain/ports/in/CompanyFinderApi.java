@@ -9,4 +9,6 @@ public interface CompanyFinderApi {
 
     List<Company> findAll();
 
+    Company findById(Long id);
+
 }

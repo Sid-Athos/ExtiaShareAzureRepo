@@ -18,4 +18,9 @@ public class CompanyFinderService implements CompanyFinderApi {
     public List<Company> findAll() {
         return spi.findAll();
     }
+
+    @Override
+    public Company findById(Long id) {
+        return spi.findById(id).get();
+    }
 }
