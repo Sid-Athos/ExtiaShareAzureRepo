@@ -1,6 +1,8 @@
 package esgi.hackathon.client.rest.resource;
 
+import esgi.hackathon.client.rest.dto.AccountDto;
 import esgi.hackathon.client.rest.dto.AccountFindRequest;
+import esgi.hackathon.client.rest.mapper.AccountDtoMapper;
 import esgi.hackathon.domain.functional.model.Account;
 import esgi.hackathon.domain.ports.in.AccountFinderApi;
 import io.vavr.control.Option;
@@ -18,20 +20,10 @@ public class AccountResource {
     private final AccountFinderApi accountFinderApi;
 
     @GetMapping(path = "/find")
-    public Option<Account> find(@RequestBody AccountFindRequest request) {
+    public Option<AccountDto> find(@RequestBody AccountFindRequest request) {
         return accountFinderApi
-                .findByMailAddressAndPassword(request.mailAddress(), request.password());
-    }
-
-/*
-    @GetMapping(path = "/find_all")
-    public List<Object> findAllAccount() {
-        return accountFinderApi
-                .findAll()
+                .findByMailAddressAndPassword(request.mailAddress(), request.password())
                 .map(AccountDtoMapper::toDto);
     }
 
-
-
-*/
 }

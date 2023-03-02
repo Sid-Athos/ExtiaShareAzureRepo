@@ -5,7 +5,6 @@ import esgi.hackathon.domain.functional.model.Account;
 import io.vavr.control.Either;
 import org.springframework.stereotype.Service;
 
-@Service
 public interface AccountCreatorApi {
     Either<ApplicationError, Account> create(Account account);
 }

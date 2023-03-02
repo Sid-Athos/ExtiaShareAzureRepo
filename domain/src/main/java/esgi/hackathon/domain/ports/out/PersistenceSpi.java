@@ -6,7 +6,6 @@ import io.vavr.control.Option;
 
 import java.util.List;
 
-
 public interface PersistenceSpi<T, ID> {
     Either<ApplicationError, T> save(T o);
 
