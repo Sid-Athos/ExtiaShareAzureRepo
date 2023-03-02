@@ -2,6 +2,7 @@ package esgi.hackathon.domain.functional.service.company;
 
 import esgi.hackathon.domain.ApplicationError;
 import esgi.hackathon.domain.functional.model.Company;
+import esgi.hackathon.domain.functional.model.StoredProduct;
 import esgi.hackathon.domain.ports.in.CompanyFinderApi;
 import esgi.hackathon.domain.ports.out.CompanyPersistenceSpi;
 import io.vavr.API;
@@ -35,4 +36,11 @@ public class CompanyFinderService implements CompanyFinderApi {
     public List<Company> findAll() {
         return spi.findAll();
     }
+
+    @Override
+    public List<StoredProduct> findAllByCompany(Long companyId) {
+        return spi.findAllByCompany(companyId);
+    }
+
+
 }

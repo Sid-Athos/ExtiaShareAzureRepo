@@ -3,9 +3,11 @@ package esgi.hackathon.client.rest.resource;
 import esgi.hackathon.client.rest.dto.AccountCreationRequest;
 import esgi.hackathon.client.rest.dto.AddContainerRequest;
 import esgi.hackathon.client.rest.dto.CompanyCreationRequest;
+import esgi.hackathon.client.rest.dto.StoredProductDto;
 import esgi.hackathon.client.rest.mapper.AccountDtoMapper;
 import esgi.hackathon.client.rest.mapper.CompanyDtoMapper;
 import esgi.hackathon.client.rest.mapper.ContainerDtoMapper;
+import esgi.hackathon.client.rest.mapper.StoredProductDtoMapper;
 import esgi.hackathon.domain.ports.in.AccountCreatorApi;
 import esgi.hackathon.domain.ports.in.CompanyContainerAdderApi;
 import esgi.hackathon.domain.ports.in.CompanyCreatorApi;
@@ -78,6 +80,16 @@ public class CompanyResource {
                 .addContainer(companyId, ContainerDtoMapper.containerCreationToDomain(request))
                 .map(CompanyDtoMapper::toDto)
                 .fold(ResponseEntity.badRequest()::body, ResponseEntity::ok);
+    }
+
+    @GetMapping(path = "/{company_id}/getProductsInContainer")
+    public List<StoredProductDto> addContainer(
+            @PathVariable("company_id") Long companyId
+    ) {
+        return companyFinderApi.findAllByCompany(companyId)
+                .stream()
+                .map(StoredProductDtoMapper::toDto)
+                .collect(Collectors.toList());
     }
 
 }
