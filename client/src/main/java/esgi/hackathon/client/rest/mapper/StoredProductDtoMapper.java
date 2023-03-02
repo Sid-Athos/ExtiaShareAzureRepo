@@ -12,7 +12,7 @@ public interface StoredProductDtoMapper {
         return new StoredProductDto(
                 storedProduct.getId(),
                 ProductDtoMapper.toDto(storedProduct.getProduct()),
-                CompanyDtoMapper.toDto(storedProduct.getCompany()),
+                ContainerDtoMapper.toDto(storedProduct.getContainer()),
                 storedProduct.getExpirationDate(),
                 storedProduct.getSize()
         );

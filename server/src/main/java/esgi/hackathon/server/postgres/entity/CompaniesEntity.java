@@ -26,7 +26,7 @@ public class CompaniesEntity implements Serializable {
     @Column(nullable = false, length = 60, name="STOCK_LOCATION")
     private String stockLocation;
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.MERGE, mappedBy = "companyId")
-    private List<StoredProductsEntity> productsInCompany;
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<ContainerEntity> containersInCompany;
 
 }
