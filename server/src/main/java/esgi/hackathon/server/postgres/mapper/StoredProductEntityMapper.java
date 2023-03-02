@@ -10,6 +10,7 @@ public interface StoredProductEntityMapper {
                 .id(entity.getId())
                 .product(ProductEntityMapper.toDomain(entity.getProduct()))
                 .container(ContainerEntityMapper.toDomain(entity.getContainer()))
+                .account(AccountEntityMapper.toDomain(entity.getAccount()))
                 .expirationDate(entity.getExpirationDate())
                 .size(entity.getSize())
                 .build();
@@ -21,6 +22,7 @@ public interface StoredProductEntityMapper {
                 .id(domain.getId())
                 .product(ProductEntityMapper.fromDomain(domain.getProduct()))
                 .container(ContainerEntityMapper.fromDomain(domain.getContainer()))
+                .account(AccountEntityMapper.fromDomain(domain.getAccount()))
                 .expirationDate(domain.getExpirationDate())
                 .size(domain.getSize())
                 .build();
