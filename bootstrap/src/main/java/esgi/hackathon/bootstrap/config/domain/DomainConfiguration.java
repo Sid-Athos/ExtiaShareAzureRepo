@@ -1,5 +1,6 @@
 package esgi.hackathon.bootstrap.config.domain;
 
+import esgi.hackathon.domain.functional.service.ContainersFinderService;
 import esgi.hackathon.domain.functional.service.account.AccountCreatorService;
 import esgi.hackathon.domain.functional.service.account.AccountDepositProductService;
 import esgi.hackathon.domain.functional.service.account.AccountFinderService;
@@ -8,10 +9,7 @@ import esgi.hackathon.domain.functional.service.category.CategoryFinderService;
 import esgi.hackathon.domain.functional.service.company.*;
 import esgi.hackathon.domain.functional.service.product.ProductFinderService;
 import esgi.hackathon.domain.ports.in.*;
-import esgi.hackathon.domain.ports.out.AccountPersistenceSpi;
-import esgi.hackathon.domain.ports.out.CategoryPersistenceSpi;
-import esgi.hackathon.domain.ports.out.CompanyPersistenceSpi;
-import esgi.hackathon.domain.ports.out.ProductPersistenceSpi;
+import esgi.hackathon.domain.ports.out.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -51,6 +49,11 @@ public class DomainConfiguration {
                 companyPersistenceSpi,
                 accountPersistenceSpi
         );
+    }
+
+    @Bean
+    public ContainersFinderApi containersFinderApi(ContainersPersistenceSpi containersPersistenceSpi){
+        return new ContainersFinderService(containersPersistenceSpi);
     }
 
 }

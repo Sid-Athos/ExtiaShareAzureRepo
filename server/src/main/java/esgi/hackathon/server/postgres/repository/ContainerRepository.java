@@ -13,7 +13,5 @@ import java.util.List;
 @Repository
 public interface ContainerRepository extends JpaRepository<ContainerEntity, Long> {
 
-    /*
     List<ContainerEntity> findAllByCompany(CompaniesEntity company);
-    */
 }

@@ -12,7 +12,6 @@ import java.util.List;
 @Getter
 @Setter
 @Builder
-
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class ContainerEntity {
 
@@ -24,7 +23,7 @@ public class ContainerEntity {
     @Column(nullable = false)
     private int size;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<StoredProductsEntity> productsInContainer;
 
     @ManyToOne
