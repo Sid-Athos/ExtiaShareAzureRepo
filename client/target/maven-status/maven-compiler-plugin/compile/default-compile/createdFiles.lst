@@ -1,0 +1,8 @@
+esgi\hackathon\client\rest\mapper\AccountDtoMapper.class
+esgi\hackathon\client\rest\resource\CompanyResource.class
+esgi\hackathon\client\rest\dto\CompanyCreationRequest.class
+esgi\hackathon\client\rest\dto\CompanyDto.class
+esgi\hackathon\client\rest\dto\AccountDto.class
+esgi\hackathon\client\rest\dto\AccountCreationRequest.class
+esgi\hackathon\client\rest\mapper\CompanyDtoMapper.class
+esgi\hackathon\client\rest\resource\AccountResource.class
