@@ -9,7 +9,6 @@ public interface CompanyEntityMapper {
         return Company.builder()
                 .id(entity.getId())
                 .name(entity.getName())
-
                 .build();
     }
 
@@ -18,7 +17,6 @@ public interface CompanyEntityMapper {
         return CompanyEntity.builder()
                 .id(domain.getId())
                 .name(domain.getName())
-
                 .build();
     }
 
