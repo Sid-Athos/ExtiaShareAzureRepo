@@ -1,22 +1,28 @@
 package esgi.hackathon.client.rest.mapper;
 
+import esgi.hackathon.client.rest.dto.AccountCreationRequest;
 import esgi.hackathon.client.rest.dto.AccountDto;
+import esgi.hackathon.domain.functional.model.Account;
 
 public interface AccountDtoMapper {
-/*
+
     static AccountDto toDto(Account account) {
         return new AccountDto(
                 account.getId(),
-                account.getPseudo(),
-                account.getNbToken(),
-                account.getDeck().map(CardDtoMapper::toDto)
+                account.getIdNFC(),
+                account.getMailAddress(),
+                account.getPassword(),
+                account.getLogo(),
+                account.getScore(),
+                CompanyDtoMapper.fromDomain(account.getCompany())
         );
     }
 
     static Account accountCreationToDomain(AccountCreationRequest request) {
         return Account.builder()
-                .pseudo(request.pseudo())
+                .password(request.password())
+                .mailAddress(request.mailAddress())
                 .build();
     }
-*/
+
 }

@@ -17,6 +17,6 @@ public class Stock {
 
     Date expirationDate;
 
-    Long size = 100L;
+    Long size;
 
 }

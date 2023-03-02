@@ -19,6 +19,11 @@ public class Account {
     @With
     String password;
 
+    @With
+    String logo;
+
+    int score;
+
     Company company;
 
 }
