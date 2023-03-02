@@ -17,7 +17,7 @@ public class CompanyEntity implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
-    private Long companyId;
+    private Long id;
 
     @Column(name = "COMPANY_NAME", unique = true, nullable = false, length = 32)
     private String name;

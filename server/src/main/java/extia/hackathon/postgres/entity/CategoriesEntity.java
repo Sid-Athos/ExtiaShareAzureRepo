@@ -17,9 +17,9 @@ public class CategoriesEntity implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Long id;
+    private Long id;
 
     @Column(unique = true, nullable = false, length=32)
-    public String description;
+    private String name;
 
 }

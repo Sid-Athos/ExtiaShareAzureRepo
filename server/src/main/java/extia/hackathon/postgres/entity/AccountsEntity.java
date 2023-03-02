@@ -12,6 +12,7 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
+@Table(name="ACCOUNTS")
 public class AccountsEntity implements Serializable {
 
     @Id
@@ -28,7 +29,7 @@ public class AccountsEntity implements Serializable {
     @Column(name="PASSWORD", nullable = false)
     private String password;
 
-    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
     @JoinColumn(name = "COMPANY_ID")
     private CompanyEntity company;
 

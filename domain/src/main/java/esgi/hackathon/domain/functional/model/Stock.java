@@ -11,9 +11,9 @@ public class Stock {
 
     Long id;
 
-    Long productId;
+    Product product;
 
-    Long companyId;
+    Company company;
 
     Date expirationDate;
 

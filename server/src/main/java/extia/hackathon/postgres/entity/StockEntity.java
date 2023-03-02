@@ -12,23 +12,23 @@ public class StockEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "COLLECTION_CARD_ID")
-    Long id;
+    private Long id;
 
     @ManyToOne
     @MapsId("productId")
     @JoinColumn(name = "PRODUCT_ID")
-    ProductEntity productId;
+    private ProductEntity productId;
 
     @ManyToOne
     @MapsId("companyId")
     @JoinColumn(name = "COMPANY_ID")
-    CompanyEntity companyId;
+    private CompanyEntity companyId;
 
     @Column(nullable = false)
-    Date expirationDate;
+    private Date expirationDate;
 
     @Column(nullable = false)
-    Long size = 1L;
+    private Long size = 1L;
 
     public Long getId() {
         return id;
