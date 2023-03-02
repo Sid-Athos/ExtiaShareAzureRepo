@@ -1,7 +1,10 @@
 package esgi.hackathon.client.rest.mapper;
 
+
 import esgi.hackathon.client.rest.dto.ProductDto;
+import esgi.hackathon.client.rest.dto.StoredProductDto;
 import esgi.hackathon.domain.functional.model.Product;
+import esgi.hackathon.domain.functional.model.StoredProduct;
 
 import java.util.stream.Collectors;
 
@@ -15,4 +18,5 @@ public interface ProductDtoMapper {
                 product.getCategoryEntitySet().stream().map(CategoryDtoMapper::toDto).collect(Collectors.toSet())
         );
     }
+
 }

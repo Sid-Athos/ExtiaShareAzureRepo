@@ -17,6 +17,6 @@ public class StoredProduct {
 
     Date expirationDate;
 
-    Long size;
+    int size;
 
 }

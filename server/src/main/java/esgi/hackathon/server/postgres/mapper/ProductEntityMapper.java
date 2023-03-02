@@ -3,6 +3,7 @@ package esgi.hackathon.server.postgres.mapper;
 import esgi.hackathon.domain.functional.model.Product;
 import esgi.hackathon.server.postgres.entity.ProductsEntity;
 
+
 import java.util.stream.Collectors;
 
 public interface ProductEntityMapper {
