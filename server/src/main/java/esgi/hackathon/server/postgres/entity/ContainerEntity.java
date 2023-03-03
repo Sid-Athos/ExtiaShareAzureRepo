@@ -6,33 +6,29 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.util.List;
 
-@Entity(name="STORED_PRODUCTS")
+@Entity(name="CONTAINERS")
 @Getter
 @Setter
 @Builder
+
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-public class StoredProductsEntity {
+public class ContainerEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "STORED_PRODUCT_ID")
+    @Column(name = "CONTAINER_ID")
     private Long id;
-
-    @ManyToOne
-    @JoinColumn(name = "PRODUCT_ID")
-    private ProductsEntity product;
-
-    @ManyToOne
-    @JoinColumn(name = "CONTAINER_ID")
-    private ContainerEntity container;
-
-    @Column(nullable = false)
-    private Date expirationDate;
 
     @Column(nullable = false)
     private int size;
 
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<StoredProductsEntity> productsInContainer;
+
+    @ManyToOne
+    @JoinColumn(name = "COMPANY_ID")
+    private CompaniesEntity company;
 
 }

@@ -13,7 +13,7 @@ public class StoredProduct {
 
     Product product;
 
-    Company company;
+    Container container;
 
     Date expirationDate;
 

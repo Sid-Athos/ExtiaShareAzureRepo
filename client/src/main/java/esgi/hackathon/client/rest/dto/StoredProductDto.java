@@ -13,7 +13,7 @@ import static com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility.ANY;
 public record StoredProductDto(
         Long id,
         ProductDto product,
-        CompanyDto company,
+        ContainerDto container,
         Date expirationDate,
         int size
 ) {
