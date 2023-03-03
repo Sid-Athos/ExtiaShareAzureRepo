@@ -9,6 +9,8 @@ import esgi.hackathon.domain.functional.model.Company;
 import esgi.hackathon.domain.functional.model.Container;
 import esgi.hackathon.domain.functional.model.StoredProduct;
 
+import java.util.List;
+
 public interface ContainerDtoMapper {
 
     static ContainerDto toDto(Container container) {
@@ -19,10 +21,10 @@ public interface ContainerDtoMapper {
         );
     }
 
-    static Container containerCreationToDomain(AddContainerRequest request) {
-        return Container.builder()
-                .size(request.size())
-                .build();
+    static List<Container> containerCreationToDomain(List<AddContainerRequest> request) {
+        return request.stream().map(r -> Container.builder()
+                .size(r.size())
+                .build()).toList();
     }
 
 }

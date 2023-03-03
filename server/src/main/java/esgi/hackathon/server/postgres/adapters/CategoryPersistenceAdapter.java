@@ -27,7 +27,7 @@ public class CategoryPersistenceAdapter implements CategoryPersistenceSpi {
         val entity = CategoryEntityMapper.fromDomain(o);
         return Try(() -> repository.save(entity))
                 .toEither()
-                .mapLeft(throwable -> new ApplicationError("Unable to save account", null, o, throwable))
+                .mapLeft(throwable -> new ApplicationError("Unable to save category", null, o, throwable))
                 .map(CategoryEntityMapper::toDomain);
     }
 

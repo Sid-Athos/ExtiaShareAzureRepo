@@ -9,6 +9,7 @@ import esgi.hackathon.domain.ports.out.CompanyPersistenceSpi;
 import io.vavr.control.Either;
 import lombok.RequiredArgsConstructor;
 
+import java.util.List;
 import java.util.logging.Logger;
 
 import static io.vavr.API.Left;
@@ -22,25 +23,25 @@ public class CompanyContainerAdderService implements CompanyContainerAdderApi {
     private final CompanyPersistenceSpi spi;
 
     @Override
-    public Either<ApplicationError, Company> addContainer(Long companyId, Container container) {
+    public Either<ApplicationError, Company> addContainer(Long companyId, List<Container> containers) {
         return spi.findById(companyId)
                 .onEmpty(() -> LOGGER.warning("Unable to found company with id : " + companyId))
                 .fold(
                         () -> Left(new ApplicationError("No company", null, companyId, null)),
-                        company -> verifyAppendAndSave(company, container)
+                        company -> verifyAppendAndSave(company, containers)
                 );
     }
 
-    private Either<ApplicationError, Company> verifyAppendAndSave(Company company, Container container) {
-        return ContainerValidator.validate(container)
+    private Either<ApplicationError, Company> verifyAppendAndSave(Company company, List<Container> containers) {
+        return ContainerValidator.validate(containers)
                 .toEither()
                 .fold(
-                        error -> Left(new ApplicationError("Container not valid", null, container, null)),
+                        error -> Left(new ApplicationError("One Of these container is not valid", null, containers, null)),
                         c -> appendAndSave(company, c)
                 );
     }
 
-    private Either<ApplicationError, Company> appendAndSave(Company company, Container container) {
-        return spi.save(company.withContainerList(company.getContainerList().append(container)));
+    private Either<ApplicationError, Company> appendAndSave(Company company, List<Container> containers) {
+        return spi.save(company.withContainerList(company.getContainerList().pushAll(containers)));
     }
 }
