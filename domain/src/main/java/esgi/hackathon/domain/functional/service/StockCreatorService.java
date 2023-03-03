@@ -6,6 +6,8 @@ import esgi.hackathon.domain.ports.in.StockCreatorApi;
 import esgi.hackathon.domain.ports.out.AccountPersistenceSpi;
 import esgi.hackathon.domain.ports.out.StockPersistenceSpi;
 
+import java.util.Objects;
+
 public class StockCreatorService implements StockCreatorApi {
 
     private final int POINTS_MODIFICATOR = 1;
@@ -36,11 +38,15 @@ public class StockCreatorService implements StockCreatorApi {
     }
 
     @Override
-    public void removeFromStock(StoredProduct storedProduct) {
+    public void removeFromStock(StoredProduct storedProduct, Long userId) {
         var userToUpdate = accountPersistenceSpi.findById(storedProduct.getAccount().getId()).orElseThrow(() -> new RuntimeException("Account doesn't exist"));
+        int userPoints = userToUpdate.getScore();
+        if(!Objects.equals(storedProduct.getAccount().getId(), userId)){
+            userPoints = computeRemovingProductAsScore(userPoints);
+        }
         var updatedUser = Account.builder()
                 .id(userToUpdate.getId())
-                .score(computeRemovingProductAsScore(userToUpdate.getScore()))
+                .score(userPoints)
                 .company(userToUpdate.getCompany())
                 .idNFC(userToUpdate.getIdNFC())
                 .logo(userToUpdate.getLogo())

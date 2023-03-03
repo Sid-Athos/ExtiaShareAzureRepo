@@ -5,6 +5,6 @@ import esgi.hackathon.domain.functional.model.StoredProduct;
 public interface StockCreatorApi {
     Long addProductInStock(StoredProduct storedProduct);
 
-    void removeFromStock(StoredProduct storedProduct);
+    void removeFromStock(StoredProduct storedProduct, Long userId);
 
 }

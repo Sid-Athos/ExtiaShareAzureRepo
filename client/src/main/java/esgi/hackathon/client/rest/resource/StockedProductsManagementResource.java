@@ -37,8 +37,8 @@ public class StockedProductsManagementResource {
         stockCreatorApi.addProductInStock(StoredProductDtoMapper.toDomain(storedProductRequest));
     }
 
-    @PostMapping(path="/remove")
-    public void removeProductFromContainer(@RequestBody DeleteStoredProductRequest storedProductRequest){
-        stockCreatorApi.removeFromStock(StoredProductDtoMapper.toDomainFromDelete(storedProductRequest));
+    @PostMapping(path="/remove/{userId}")
+    public void removeProductFromContainer(@PathVariable Long userId, @RequestBody DeleteStoredProductRequest storedProductRequest){
+        stockCreatorApi.removeFromStock(StoredProductDtoMapper.toDomainFromDelete(storedProductRequest), userId);
     }
 }
