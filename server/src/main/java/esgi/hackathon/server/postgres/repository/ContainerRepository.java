@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ContainerRepository extends JpaRepository<ContainersEntity, Long> {
 
-
+    /*
     List<ContainerEntity> findAllByCompany(CompaniesEntity company);
-
+    */
 }
