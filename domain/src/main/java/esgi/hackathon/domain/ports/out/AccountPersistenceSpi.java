@@ -7,4 +7,7 @@ import java.util.List;
 
 public interface AccountPersistenceSpi extends PersistenceSpi<Account, Long> {
     Option<Account> findByMailAddressAndPassword(String email, String password);
+
+    Option<Account> findByMailAddress(String email);
+
 }

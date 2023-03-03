@@ -12,7 +12,6 @@ public interface AccountDtoMapper {
                 account.getId(),
                 account.getIdNFC(),
                 account.getMailAddress(),
-                account.getPassword(),
                 account.getLogo(),
                 account.getScore(),
                 CompanyDtoMapper.toDto(account.getCompany())

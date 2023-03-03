@@ -13,10 +13,12 @@ public class StoredProduct {
 
     Product product;
 
-    Company company;
+    Container container;
+
+    Account account;
 
     Date expirationDate;
 
-    Long size;
+    int size;
 
 }

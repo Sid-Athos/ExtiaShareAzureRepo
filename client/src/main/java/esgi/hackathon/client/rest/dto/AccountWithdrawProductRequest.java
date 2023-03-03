@@ -1,17 +1,12 @@
 package esgi.hackathon.client.rest.dto;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
-import esgi.hackathon.domain.functional.model.Category;
-import java.util.Set;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import static com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility.ANY;
 
 @JsonAutoDetect(fieldVisibility = ANY)
-public record ProductDto(
-        Long id,
-        String name,
-        String description,
-        Set<CategoryDto> categoryEntitySet
+public record AccountWithdrawProductRequest(
+        @JsonProperty("productId") Long productId
 ) {
-
 }

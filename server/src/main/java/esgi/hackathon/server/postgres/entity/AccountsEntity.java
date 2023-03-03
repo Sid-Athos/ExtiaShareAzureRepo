@@ -16,7 +16,7 @@ public class AccountsEntity implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID", nullable = false)
+    @Column(name = "ACCOUNT_ID", nullable = false)
     private Long id;
 
     @Column(name = "ID_NFC", unique = true, nullable = false, length=50)

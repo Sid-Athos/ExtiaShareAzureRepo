@@ -1,39 +1,39 @@
 package esgi.hackathon.server.postgres.entity;
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.Date;
 
-@Entity(name="STOCKS")
+@Entity(name="STORED_PRODUCTS")
 @Getter
 @Setter
+@Builder
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class StoredProductsEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "COLLECTION_CARD_ID")
+    @Column(name = "STORED_PRODUCT_ID")
     private Long id;
 
     @ManyToOne
-    @MapsId("productId")
     @JoinColumn(name = "PRODUCT_ID")
-    private ProductsEntity productId;
+    private ProductsEntity product;
 
     @ManyToOne
-    @MapsId("companyId")
-    @JoinColumn(name = "COMPANY_ID")
-    private CompaniesEntity companyId;
+    @JoinColumn(name = "CONTAINER_ID")
+    private ContainersEntity container;
+
+    @ManyToOne
+    @JoinColumn(name = "ACCOUNT_ID")
+    private AccountsEntity account;
 
     @Column(nullable = false)
     private Date expirationDate;
 
     @Column(nullable = false)
-    private Long size = 1L;
-
+    private int size;
 
 
 }

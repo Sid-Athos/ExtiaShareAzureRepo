@@ -2,9 +2,13 @@ package esgi.hackathon.server.postgres.adapters;
 
 import esgi.hackathon.domain.ApplicationError;
 import esgi.hackathon.domain.functional.model.Company;
+import esgi.hackathon.domain.functional.model.StoredProduct;
 import esgi.hackathon.domain.ports.out.CompanyPersistenceSpi;
 import esgi.hackathon.server.postgres.mapper.CompanyEntityMapper;
+import esgi.hackathon.server.postgres.mapper.StoredProductEntityMapper;
 import esgi.hackathon.server.postgres.repository.CompanyRepository;
+import esgi.hackathon.server.postgres.repository.ContainerRepository;
+import esgi.hackathon.server.postgres.repository.StoredProductRepository;
 import io.vavr.control.Either;
 import io.vavr.control.Option;
 import lombok.RequiredArgsConstructor;
@@ -21,13 +25,15 @@ import static io.vavr.API.Try;
 public class CompanyPersistenceAdapter implements CompanyPersistenceSpi {
 
     private final CompanyRepository repository;
+    private final ContainerRepository containerRepository;
 
     @Override
     public Either<ApplicationError, Company> save(Company o) {
         val entity = CompanyEntityMapper.fromDomain(o);
+        containerRepository.saveAll(entity.getContainersInCompany());
         return Try(() -> repository.save(entity))
                 .toEither()
-                .mapLeft(throwable -> new ApplicationError("Unable to save account", null, o, throwable))
+                .mapLeft(throwable -> new ApplicationError("Unable to save company", null, o, throwable))
                 .map(CompanyEntityMapper::toDomain);
     }
 
@@ -43,4 +49,7 @@ public class CompanyPersistenceAdapter implements CompanyPersistenceSpi {
     public Option<Company> findById(Long id) {
         return repository.findCompanyEntityById(id).map(CompanyEntityMapper::toDomain);
     }
+
+
+
 }
