@@ -8,4 +8,6 @@ public interface StoredProductPersistenceSpi extends PersistenceSpi<StoredProduc
 
     List<StoredProduct> findAllByCompany(Long companyId);
 
+    void deleteById(Long storedProductId);
+
 }

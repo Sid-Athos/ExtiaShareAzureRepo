@@ -17,7 +17,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class StoredProductPersistenceAdapter implements StoredProductPersistenceSpi {
 
-    StoredProductRepository repository;
+    private final StoredProductRepository repository;
 
     @Override
     public List<StoredProduct> findAllByCompany(Long companyId) {
@@ -25,6 +25,11 @@ public class StoredProductPersistenceAdapter implements StoredProductPersistence
                 .stream()
                 .map(StoredProductEntityMapper::toDomain)
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public void deleteById(Long storedProductId) {
+        repository.deleteById(storedProductId);
     }
 
     @Override
