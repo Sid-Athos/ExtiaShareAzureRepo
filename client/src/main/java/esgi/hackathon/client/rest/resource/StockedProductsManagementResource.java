@@ -10,6 +10,7 @@ import esgi.hackathon.domain.ports.in.StockCreatorApi;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @CrossOrigin
@@ -28,7 +29,7 @@ public class StockedProductsManagementResource {
         return containersFinderApi.findAllWithProductsForCompany(companyId)
                 .stream()
                 .map(ContainerDtoMapper::toDto)
-                .toList();
+                .collect(Collectors.toList());
     }
 
     @PostMapping(path="/add")

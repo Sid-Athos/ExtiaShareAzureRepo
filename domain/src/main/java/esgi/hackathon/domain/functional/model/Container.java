@@ -1,9 +1,10 @@
 package esgi.hackathon.domain.functional.model;
 
-import io.vavr.collection.List;
 import lombok.Builder;
 import lombok.Value;
 import lombok.With;
+
+import java.util.List;
 
 
 @Value
@@ -15,6 +16,6 @@ public class Container {
     int size;
 
     @With @Builder.Default
-    List<StoredProduct> storedProductList = List.of();
+    List<StoredProduct> storedProductList;
 
 }

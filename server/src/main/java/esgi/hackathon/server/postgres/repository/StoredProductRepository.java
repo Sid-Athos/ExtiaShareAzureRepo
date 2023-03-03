@@ -12,6 +12,6 @@ import java.util.Optional;
 @Repository
 public interface StoredProductRepository extends JpaRepository<StoredProductsEntity, Long> {
     @Query("SELECT stock FROM STOCKS stock WHERE stock.container.company.id = :companyId")
-    List<StoredProductsEntity> getAvailablePlacesInStock(@Param("companyId") Long companyId);
+    List<StoredProductsEntity> findAllCompanyProducts(@Param("companyId") Long companyId);
 
 }

@@ -21,7 +21,7 @@ public class ContainerEntity {
     @Column(nullable = false)
     private int size;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "container")
     private List<StoredProductsEntity> productsInContainer;
 
     @ManyToOne
