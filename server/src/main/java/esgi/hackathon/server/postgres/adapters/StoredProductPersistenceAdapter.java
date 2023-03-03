@@ -22,7 +22,7 @@ public class StoredProductPersistenceAdapter implements StoredProductPersistence
 
     @Override
     public List<StoredProduct> findAllByCompany(Long companyId) {
-        return repository.findAllByCompany(companyId)
+        return repository.findAllCompanyProducts(companyId)
                 .stream()
                 .map(StoredProductEntityMapper::toDomain)
                 .collect(Collectors.toList());

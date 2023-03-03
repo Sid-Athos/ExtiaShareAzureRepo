@@ -19,7 +19,7 @@ public class ContainersEntity {
     private Long id;
 
     @Column(nullable = false)
-    private Integer size;
+    private int size;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "container")
     private List<StoredProductsEntity> productsInContainer;

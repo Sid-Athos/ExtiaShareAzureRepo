@@ -27,6 +27,7 @@ public class ContainersPersistenceAdapter implements ContainersPersistenceSpi {
     @Override
     public List<Container> findAllWithProductsForCompany(Long companyId) {
         CompaniesEntity toFind = CompaniesEntity.builder().id(companyId).build();
+        storedProductRepository.findAllCompanyProducts(companyId);
         return containerRepository.findAllByCompany(toFind).stream().map(ContainerEntityMapper::toDomain).toList();
     }
 
