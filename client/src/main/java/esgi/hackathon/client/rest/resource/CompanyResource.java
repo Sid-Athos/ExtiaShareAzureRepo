@@ -8,6 +8,12 @@ import esgi.hackathon.client.rest.mapper.AccountDtoMapper;
 import esgi.hackathon.client.rest.mapper.CompanyDtoMapper;
 import esgi.hackathon.client.rest.mapper.ContainerDtoMapper;
 import esgi.hackathon.client.rest.mapper.StoredProductDtoMapper;
+import esgi.hackathon.domain.functional.model.Company;
+import esgi.hackathon.domain.ports.in.AccountCreatorApi;
+import esgi.hackathon.domain.ports.in.CompanyContainerAdderApi;
+import esgi.hackathon.domain.ports.in.CompanyCreatorApi;
+import esgi.hackathon.domain.ports.in.CompanyFinderApi;
+import io.vavr.control.Either;
 import esgi.hackathon.domain.ports.in.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -69,14 +75,12 @@ public class CompanyResource {
     }
 
     @PostMapping(path = "/{company_id}/add_container")
-    public ResponseEntity<Object> addContainer(
+    public Company addContainer(
             @PathVariable("company_id") Long companyId,
-            @RequestBody AddContainerRequest request
+            @RequestBody List<AddContainerRequest> request
     ) {
         return companyContainerAdderApi
-                .addContainer(companyId, ContainerDtoMapper.containerCreationToDomain(request))
-                .map(CompanyDtoMapper::toDto)
-                .fold(ResponseEntity.badRequest()::body, ResponseEntity::ok);
+.addContainer(companyId, ContainerDtoMapper.containerCreationToDomain(request)).get();
     }
 
     @GetMapping(path = "/{company_id}/products")
