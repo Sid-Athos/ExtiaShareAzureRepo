@@ -9,4 +9,5 @@ public interface ContainersPersistenceSpi {
     Container findWithEnoughSpace(int size, Long companyId);
 
     void save(Container companyToSave);
+
 }

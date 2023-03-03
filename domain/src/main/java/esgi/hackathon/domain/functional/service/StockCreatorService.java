@@ -32,11 +32,10 @@ public class StockCreatorService implements StockCreatorApi {
     public void addProductInStock(StoredProduct storedProduct) {
         var userToUpdate = accountPersistenceSpi.findById(storedProduct.getAccount().getId()).orElseThrow(() -> new RuntimeException("Account doesn't exist"));
         var container = containersPersistenceSpi.findWithEnoughSpace(storedProduct.getSize(), userToUpdate.getCompany().getId());
-        var productToAdd = productPersistenceSpi.findByName(storedProduct.getProduct().getName()).orElse(
-
-            productPersistenceSpi.save(storedProduct.getProduct()).get()
-        );
-
+        var productToAdd = productPersistenceSpi.findByName(storedProduct.getProduct().getName());
+        if(productToAdd.isEmpty()){
+            productToAdd = productPersistenceSpi.save(storedProduct.getProduct()).toJavaOptional();
+        }
         if(storedProduct.getSize() >= container.getSize()){
             throw new RuntimeException("Illegal operation, product takes too much place");
         }
@@ -50,20 +49,22 @@ public class StockCreatorService implements StockCreatorApi {
                 .mailAddress(userToUpdate.getMailAddress())
                 .password(userToUpdate.getPassword())
                 .build();
-        StoredProduct.builder()
-                .product(productToAdd)
+        var toSave = StoredProduct.builder()
+                .product(productToAdd.orElseThrow(() -> new RuntimeException(("Invalud product"))))
                         .account(updatedUser)
                         .expirationDate(storedProduct.getExpirationDate())
                         .container(container)
-                        .size(storedProduct.getSize());
-        stockPersistenceSpi.addProductInStock(storedProduct);
+                        .size(computeNewContainerSize(container.getSize(), storedProduct.getSize())).build();
+        stockPersistenceSpi.addProductInStock(toSave);
         containersPersistenceSpi.save(container);
         accountPersistenceSpi.save(updatedUser);
     }
 
     @Override
     public void removeFromStock(StoredProduct storedProduct, Long userId) {
-        var userToUpdate = accountPersistenceSpi.findById(storedProduct.getAccount().getId()).orElseThrow(() -> new RuntimeException("Account doesn't exist"));
+        var userToUpdate = accountPersistenceSpi.findById(userId).orElseThrow(() -> new RuntimeException("Account doesn't exist"));
+        //var container = containersPersistenceSpi.fin(storedProduct.getSize(), userToUpdate.getCompany().getId());
+
         int userPoints = userToUpdate.getScore();
         if(!Objects.equals(storedProduct.getAccount().getId(), userId)){
             userPoints = computeRemovingProductAsScore(userPoints);

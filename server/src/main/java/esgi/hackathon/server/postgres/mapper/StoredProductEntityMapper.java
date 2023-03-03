@@ -1,6 +1,7 @@
 package esgi.hackathon.server.postgres.mapper;
 
 import esgi.hackathon.domain.functional.model.StoredProduct;
+import esgi.hackathon.server.postgres.entity.AccountsEntity;
 import esgi.hackathon.server.postgres.entity.ContainersEntity;
 import esgi.hackathon.server.postgres.entity.ProductsEntity;
 import esgi.hackathon.server.postgres.entity.StoredProductsEntity;
@@ -21,9 +22,12 @@ public interface StoredProductEntityMapper {
     static StoredProductsEntity fromDomain(StoredProduct domain) {
         System.out.println("Creation StoredProductsEntity");
         var container = new ContainersEntity();
+        var account = new AccountsEntity();
+        account.setId(domain.getAccount().getId());
         container.setId(domain.getContainer().getId());
         var entity = new StoredProductsEntity();
         entity.setId(domain.getId());
+        entity.setAccount(account);
         entity.setSize(domain.getSize());
         entity.setContainer(container);
         entity.setProduct(ProductsEntity.builder().id(domain.getProduct().getId()).build());

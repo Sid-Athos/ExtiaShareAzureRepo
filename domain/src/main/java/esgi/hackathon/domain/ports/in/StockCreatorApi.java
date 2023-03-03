@@ -7,4 +7,6 @@ public interface StockCreatorApi {
 
     void removeFromStock(StoredProduct storedProduct, Long userId);
 
+
+
 }
