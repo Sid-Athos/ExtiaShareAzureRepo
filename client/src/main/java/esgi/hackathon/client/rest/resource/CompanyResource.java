@@ -6,6 +6,7 @@ import esgi.hackathon.client.rest.dto.CompanyCreationRequest;
 import esgi.hackathon.client.rest.mapper.AccountDtoMapper;
 import esgi.hackathon.client.rest.mapper.CompanyDtoMapper;
 import esgi.hackathon.client.rest.mapper.ContainerDtoMapper;
+import esgi.hackathon.domain.functional.model.Company;
 import esgi.hackathon.domain.ports.in.AccountCreatorApi;
 import esgi.hackathon.domain.ports.in.CompanyContainerAdderApi;
 import esgi.hackathon.domain.ports.in.CompanyCreatorApi;
@@ -42,11 +43,9 @@ public class CompanyResource {
     }
 
     @GetMapping(path = "/find/{company_id}")
-    public ResponseEntity<Object> findById(@PathVariable("company_id") Long companyId) {
+    public Company findById(@PathVariable("company_id") Long companyId) {
         return companyFinderApi
-                .findById(companyId)
-                .map(CompanyDtoMapper::toDto)
-                .fold(ResponseEntity.badRequest()::body, ResponseEntity::ok);
+                .findById(companyId);
     }
 
     @PostMapping(path = "/create")
@@ -69,14 +68,12 @@ public class CompanyResource {
     }
 
     @PostMapping(path = "/{company_id}/add_container")
-    public ResponseEntity<Object> addContainer(
+    public void addContainer(
             @PathVariable("company_id") Long companyId,
             @RequestBody AddContainerRequest request
     ) {
-        return companyContainerAdderApi
-                .addContainer(companyId, ContainerDtoMapper.containerCreationToDomain(request))
-                .map(CompanyDtoMapper::toDto)
-                .fold(ResponseEntity.badRequest()::body, ResponseEntity::ok);
+        companyContainerAdderApi
+                .addContainer(companyId, ContainerDtoMapper.containerCreationToDomain(request));
     }
 
 }

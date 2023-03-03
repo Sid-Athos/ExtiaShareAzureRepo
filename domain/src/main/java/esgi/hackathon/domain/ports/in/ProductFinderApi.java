@@ -1,8 +1,10 @@
 package esgi.hackathon.domain.ports.in;
 
+import esgi.hackathon.domain.functional.model.Account;
 import esgi.hackathon.domain.functional.model.Product;
-import io.vavr.control.Option;
+
+import java.util.Optional;
 
 public interface ProductFinderApi {
-    Option<Product> findById(Long id);
+    Optional<Product> findById(Long id);
 }

@@ -15,6 +15,9 @@ public class StoredProduct {
 
     Container container;
 
+    Account account;
+
+
     Date expirationDate;
 
     int size;

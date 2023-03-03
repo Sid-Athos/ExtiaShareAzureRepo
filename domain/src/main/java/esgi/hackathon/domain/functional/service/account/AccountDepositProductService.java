@@ -19,7 +19,7 @@ public class AccountDepositProductService implements AccountDepositProductApi {
     @Override
     public void deposit(Long accountId, Product product, Long containerId) {
 
-        Account account = accountSpi.findById(accountId).getOrElseThrow(() -> new RuntimeException("Account not found"));
+        Account account = accountSpi.findById(accountId).orElseThrow(() -> new RuntimeException("Account not found"));
 
         Company company = account.getCompany();
 

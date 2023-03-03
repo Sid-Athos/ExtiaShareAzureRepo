@@ -1,6 +1,7 @@
 package esgi.hackathon.bootstrap.config.domain;
 
 import esgi.hackathon.domain.functional.service.ContainersFinderService;
+import esgi.hackathon.domain.functional.service.StockCreatorService;
 import esgi.hackathon.domain.functional.service.account.AccountCreatorService;
 import esgi.hackathon.domain.functional.service.account.AccountDepositProductService;
 import esgi.hackathon.domain.functional.service.account.AccountFinderService;
@@ -54,6 +55,11 @@ public class DomainConfiguration {
     @Bean
     public ContainersFinderApi containersFinderApi(ContainersPersistenceSpi containersPersistenceSpi){
         return new ContainersFinderService(containersPersistenceSpi);
+    }
+
+    @Bean
+    public StockCreatorApi stockCreatorApi(StockPersistenceSpi stockPersistenceSpi, AccountPersistenceSpi accountPersistenceSpi){
+        return new StockCreatorService(stockPersistenceSpi, accountPersistenceSpi);
     }
 
 }

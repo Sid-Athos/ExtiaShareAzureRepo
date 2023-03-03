@@ -9,6 +9,6 @@ import java.util.List;
 
 public interface CompanyContainerAdderApi {
 
-    Either<ApplicationError, Company> addContainer(Long companyId, Container container);
+    Company addContainer(Long companyId, Container container);
 
 }

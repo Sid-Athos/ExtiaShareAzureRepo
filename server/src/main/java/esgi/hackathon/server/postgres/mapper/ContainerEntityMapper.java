@@ -16,10 +16,11 @@ public interface ContainerEntityMapper {
 
     static ContainerEntity fromDomain(Container domain) {
         System.out.println("Creation ContainerEntity");
-        return ContainerEntity.builder()
-                .id(domain.getId())
-                .size(domain.getSize())
-                .build();
+        var container = new ContainerEntity();
+        container.setId(domain.getId());
+        container.setSize(domain.getSize());
+
+        return container;
     }
 
 }

@@ -19,6 +19,10 @@ public interface ProductDtoMapper {
         );
     }
 
+    static Product toDomain(ProductDto product) {
+        return Product.builder().id(product.id()).description(product.description()).name(product.name()).build();
+    }
+
     static Product productCreationToDomain(AccountDepositProductRequest request) {
         return Product.builder()
                 .name(request.name())

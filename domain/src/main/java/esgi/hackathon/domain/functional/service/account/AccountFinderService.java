@@ -7,6 +7,7 @@ import io.vavr.control.Option;
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;
+import java.util.Optional;
 
 
 @RequiredArgsConstructor
@@ -15,7 +16,7 @@ public class AccountFinderService implements AccountFinderApi {
     private final AccountPersistenceSpi spi;
 
     @Override
-    public Option<Account> findById(Long id) {
+    public Optional<Account> findById(Long id) {
         return spi.findById(id);
     }
 

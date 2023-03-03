@@ -25,8 +25,8 @@ public class Account {
     @With
     String logo;
 
-    @Builder.Default
-    int score = 0;
+    @With
+    int score;
 
     Company company;
 

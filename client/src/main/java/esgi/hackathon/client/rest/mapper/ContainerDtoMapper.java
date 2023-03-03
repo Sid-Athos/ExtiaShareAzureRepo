@@ -16,6 +16,13 @@ public interface ContainerDtoMapper {
         );
     }
 
+    static Container toDomain(ContainerDto container) {
+        return Container.builder()
+                .id(container.id())
+                .size(container.size())
+                .build();
+    }
+
     static Container containerCreationToDomain(AddContainerRequest request) {
         return Container.builder()
                 .size(request.size())

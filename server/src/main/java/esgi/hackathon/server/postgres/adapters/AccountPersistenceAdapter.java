@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import static io.vavr.API.Try;
@@ -42,8 +43,8 @@ public class AccountPersistenceAdapter implements AccountPersistenceSpi {
     }
 
     @Override
-    public Option<Account> findById(Long id) {
-        return repository.findAccountEntityById(id).map(AccountEntityMapper::toDomain);
+    public Optional<Account> findById(Long id) {
+        return repository.findById(id).map(AccountEntityMapper::toDomain);
     }
 
     @Override

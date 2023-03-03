@@ -1,17 +1,18 @@
 package esgi.hackathon.server.postgres.adapters;
 
 import esgi.hackathon.domain.ApplicationError;
+import esgi.hackathon.domain.functional.model.Account;
 import esgi.hackathon.domain.functional.model.Category;
 import esgi.hackathon.domain.ports.out.CategoryPersistenceSpi;
 import esgi.hackathon.server.postgres.mapper.CategoryEntityMapper;
 import esgi.hackathon.server.postgres.repository.CategoryRepository;
 import io.vavr.control.Either;
-import io.vavr.control.Option;
 import lombok.RequiredArgsConstructor;
 import lombok.val;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import static io.vavr.API.Try;
@@ -40,7 +41,7 @@ public class CategoryPersistenceAdapter implements CategoryPersistenceSpi {
     }
 
     @Override
-    public Option<Category> findById(Long aLong) {
+    public Optional<Category> findById(Long aLong) {
         return null;
     }
 

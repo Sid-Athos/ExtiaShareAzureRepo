@@ -1,9 +1,6 @@
 package esgi.hackathon.server.postgres.entity;
 
-import lombok.Builder;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.List;
@@ -11,7 +8,8 @@ import java.util.List;
 @Entity(name="CONTAINERS")
 @Getter
 @Setter
-@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class ContainerEntity {
 

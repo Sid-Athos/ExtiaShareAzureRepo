@@ -12,6 +12,7 @@ public interface AccountDtoMapper {
                 account.getId(),
                 account.getIdNFC(),
                 account.getMailAddress(),
+                account.getPassword(),
                 account.getLogo(),
                 account.getScore(),
                 CompanyDtoMapper.toDto(account.getCompany())
@@ -23,6 +24,16 @@ public interface AccountDtoMapper {
                 .password(request.password())
                 .mailAddress(request.mailAddress())
                 .company(Company.builder().id(companyId).build())
+                .build();
+    }
+
+    static Account toDomain(AccountDto request) {
+        return Account.builder()
+                .id(request.id())
+                .password(request.password())
+                .mailAddress(request.mailAddress())
+                .company(Company.builder().id(request.company().id())
+                        .build())
                 .build();
     }
 
