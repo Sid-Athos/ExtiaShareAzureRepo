@@ -8,14 +8,13 @@ import lombok.With;
 
 @Value
 @Builder
-public class Company {
+public class Container {
 
     Long id;
 
-    String name;
+    int size;
 
-    @With
-    @Builder.Default
-    List<Container> containerList = List.of();
+    @With @Builder.Default
+    List<StoredProduct> storedProductList = List.of();
 
 }

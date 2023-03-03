@@ -1,0 +1,31 @@
+package esgi.hackathon.server.postgres.entity;
+
+import lombok.*;
+
+import javax.persistence.*;
+import java.util.List;
+
+@Entity(name="CONTAINERS")
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
+public class ContainerEntity {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "CONTAINER_ID")
+    private Long id;
+
+    @Column(nullable = false)
+    private int size;
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<StoredProductsEntity> productsInContainer;
+
+    @ManyToOne
+    @JoinColumn(name = "COMPANY_ID")
+    private CompaniesEntity company;
+
+}

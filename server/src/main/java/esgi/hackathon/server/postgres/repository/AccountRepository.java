@@ -12,4 +12,9 @@ public interface AccountRepository extends JpaRepository<AccountsEntity, Long> {
 
     Option<AccountsEntity> findByMailAddressAndPassword(String address, String password);
 
+    Option<AccountsEntity> findByMailAddress(String address);
+
+
+
+
 }

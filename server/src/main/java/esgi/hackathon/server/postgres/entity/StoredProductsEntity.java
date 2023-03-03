@@ -1,8 +1,6 @@
 package esgi.hackathon.server.postgres.entity;
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -11,6 +9,7 @@ import java.util.Date;
 @Getter
 @Setter
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
+@NoArgsConstructor
 public class StoredProductsEntity {
 
     @Id
@@ -19,21 +18,18 @@ public class StoredProductsEntity {
     private Long id;
 
     @ManyToOne
-    @MapsId("productId")
     @JoinColumn(name = "PRODUCT_ID")
-    private ProductsEntity productId;
+    private ProductsEntity product;
 
     @ManyToOne
-    @MapsId("companyId")
-    @JoinColumn(name = "COMPANY_ID")
-    private CompaniesEntity companyId;
+    @JoinColumn(name = "CONTAINER_ID")
+    private ContainerEntity container;
 
     @Column(nullable = false)
     private Date expirationDate;
 
     @Column(nullable = false)
-    private Long size = 1L;
-
+    private int size;
 
 
 }

@@ -1,4 +1,3 @@
-INSERT INTO COMPANIES(ID, COMPANY_NAME, STOCK_LOCATION) VALUES (default, 'Extia','3ème étage salle 24');
 
 INSERT INTO CATEGORIES(ID, NAME) VALUES (default, 'Vegan');
 INSERT INTO CATEGORIES(ID, NAME) VALUES (default, 'Gluten free');
@@ -9,3 +8,13 @@ INSERT INTO CATEGORIES(ID, NAME) VALUES (default, 'Poisson');
 INSERT INTO CATEGORIES(ID, NAME) VALUES (default, 'Sans sucre');
 INSERT INTO CATEGORIES(ID, NAME) VALUES (default, 'Fruit');
 INSERT INTO CATEGORIES(ID, NAME) VALUES (default, 'Légumes');
+INSERT INTO companies (id, COMPANY_NAME) values (default, 'SID');
+INSERT INTO companies (id, COMPANY_NAME) values (default, 'EXTIA');
+
+INSERT INTO ACCOUNTS(ID, ID_NFC, LOGO, EMAIL, PASSWORD, SCORE, COMPANY_ID) VALUES (default, 'Légumes','légumes','lgumes@leg.um','dsqdqs', 10, 1);
+
+INSERT INTO CONTAINERS(CONTAINER_ID, SIZE, COMPANY_ID) VALUES (default, 100, 1);
+
+INSERT INTO PRODUCTS(ID, NAME, DESCRIPTION) VALUES (default, 'Fraises', 'Mara des bois');
+INSERT INTO PRODUCTS(ID, NAME, DESCRIPTION) VALUES (default, 'Framboises', 'Oui');
+

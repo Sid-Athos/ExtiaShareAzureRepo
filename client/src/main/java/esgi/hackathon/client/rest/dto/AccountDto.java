@@ -12,6 +12,7 @@ public record AccountDto(
         String idNFC,
         String mailAddress,
         String password,
+
         String logo,
         int score,
         CompanyDto company

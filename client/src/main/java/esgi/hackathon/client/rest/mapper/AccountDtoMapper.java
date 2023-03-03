@@ -27,4 +27,14 @@ public interface AccountDtoMapper {
                 .build();
     }
 
+    static Account toDomain(AccountDto request) {
+        return Account.builder()
+                .id(request.id())
+                .password(request.password())
+                .mailAddress(request.mailAddress())
+                .company(Company.builder().id(request.company().id())
+                        .build())
+                .build();
+    }
+
 }

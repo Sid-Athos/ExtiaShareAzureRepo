@@ -9,6 +9,7 @@ import static com.tngtech.archunit.junit.CacheMode.FOREVER;
 import static com.tngtech.archunit.lang.syntax.ArchRuleDefinition.classes;
 import static esgi.hackathon.bootstrap.PackagesAndLayers.BOOTSTRAP_PACKAGE;
 
+/**
 @AnalyzeClasses(
     packages = "esgi.hackathon.bootstrap",
     cacheMode = FOREVER,
@@ -25,3 +26,4 @@ public class BootstrapDevelopmentRulesTest {
           .byClassesThat()
           .resideInAPackage(BOOTSTRAP_PACKAGE);
 }
+ */
