@@ -19,7 +19,7 @@ public class AccountsEntity implements Serializable {
     @Column(name = "ACCOUNT_ID", nullable = false)
     private Long id;
 
-    @Column(name = "ID_NFC", unique = true, nullable = false, length=50)
+    @Column(name = "ID_NFC", unique = true, length=50)
     private int[] idNFC;
 
     @Column(name="EMAIL", unique = true, nullable = false, length=50)
