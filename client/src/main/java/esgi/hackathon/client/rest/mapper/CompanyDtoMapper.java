@@ -10,7 +10,8 @@ public interface CompanyDtoMapper {
     static CompanyDto toDto(Company company) {
         return new CompanyDto(
                 company.getId(),
-                company.getName()
+                company.getName(),
+                company.getContainerList().map(ContainerDtoMapper::toDto).asJavaMutable()
         );
     }
 
