@@ -12,9 +12,8 @@ public class Account {
 
     Long id;
 
-    @Builder.Default
     @With
-    String idNFC = UUID.randomUUID().toString();
+    int[] idNFC;
 
     @With
     String mailAddress;
@@ -26,6 +25,7 @@ public class Account {
     String logo;
 
     @Builder.Default
+    @With
     int score = 0;
 
     Company company;

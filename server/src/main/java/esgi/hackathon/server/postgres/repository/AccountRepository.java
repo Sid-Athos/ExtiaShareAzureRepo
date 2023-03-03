@@ -14,4 +14,6 @@ public interface AccountRepository extends JpaRepository<AccountsEntity, Long> {
 
     Option<AccountsEntity> findByMailAddress(String address);
 
+    Option<AccountsEntity> findByIdNFC(int[] idNFC);
+
 }

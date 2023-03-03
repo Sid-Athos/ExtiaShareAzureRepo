@@ -57,4 +57,11 @@ public class AccountPersistenceAdapter implements AccountPersistenceSpi {
         return repository.findByMailAddress(email)
                 .map(AccountEntityMapper::toDomain);
     }
+
+    @Override
+    public Option<Account> findByNFC(int[] idNFC) {
+        return repository.findByIdNFC(idNFC)
+                .map(AccountEntityMapper::toDomain);
+    }
+
 }

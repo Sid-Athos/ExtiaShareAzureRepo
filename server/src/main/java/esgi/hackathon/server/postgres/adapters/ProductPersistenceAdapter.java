@@ -14,6 +14,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -28,7 +29,7 @@ public class ProductPersistenceAdapter implements ProductPersistenceSpi {
 
     @Override
     public List<Product> findAll() {
-        return null;
+        return repository.findAll().stream().map(ProductEntityMapper::toDomain).collect(Collectors.toList());
     }
 
     @Override

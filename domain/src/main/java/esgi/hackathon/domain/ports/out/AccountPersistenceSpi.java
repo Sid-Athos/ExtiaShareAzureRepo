@@ -10,4 +10,6 @@ public interface AccountPersistenceSpi extends PersistenceSpi<Account, Long> {
 
     Option<Account> findByMailAddress(String email);
 
+    Option<Account> findByNFC(int[] idNFC);
+
 }
