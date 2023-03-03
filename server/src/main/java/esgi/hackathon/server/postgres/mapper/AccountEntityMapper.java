@@ -11,17 +11,18 @@ public interface AccountEntityMapper {
                 .idNFC(entity.getIdNFC())
                 .mailAddress(entity.getMailAddress())
                 .password(entity.getPassword())
+                .score(entity.getScore())
                 .company(CompanyEntityMapper.toDomain(entity.getCompany()))
                 .build();
     }
 
     static AccountsEntity fromDomain(Account domain) {
-        System.out.println("Creation AccountEntity");
         return AccountsEntity.builder()
                 .id(domain.getId())
                 .idNFC(domain.getIdNFC())
                 .mailAddress(domain.getMailAddress())
                 .password(domain.getPassword())
+                .score(domain.getScore())
                 .company(CompanyEntityMapper.fromDomain(domain.getCompany()))
                 .build();
     }

@@ -13,7 +13,6 @@ import esgi.hackathon.domain.ports.in.AccountCreatorApi;
 import esgi.hackathon.domain.ports.in.CompanyContainerAdderApi;
 import esgi.hackathon.domain.ports.in.CompanyCreatorApi;
 import esgi.hackathon.domain.ports.in.CompanyFinderApi;
-import io.vavr.control.Either;
 import esgi.hackathon.domain.ports.in.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -48,11 +47,9 @@ public class CompanyResource {
     }
 
     @GetMapping(path = "/find/{company_id}")
-    public ResponseEntity<Object> findById(@PathVariable("company_id") Long companyId) {
+    public Company findById(@PathVariable("company_id") Long companyId) {
         return companyFinderApi
-                .findById(companyId)
-                .map(CompanyDtoMapper::toDto)
-                .fold(ResponseEntity.badRequest()::body, ResponseEntity::ok);
+                .findById(companyId);
     }
 
     @PostMapping(path = "/create")
@@ -80,7 +77,7 @@ public class CompanyResource {
             @RequestBody List<AddContainerRequest> request
     ) {
         return companyContainerAdderApi
-.addContainer(companyId, ContainerDtoMapper.containerCreationToDomain(request)).get();
+.addContainer(companyId, ContainerDtoMapper.containerCreationToDomain(request));
     }
 
     @GetMapping(path = "/{company_id}/products")

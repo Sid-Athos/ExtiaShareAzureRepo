@@ -6,7 +6,6 @@ import esgi.hackathon.domain.functional.model.StoredProduct;
 import esgi.hackathon.domain.ports.in.CompanyFinderApi;
 import esgi.hackathon.domain.ports.out.CompanyPersistenceSpi;
 import io.vavr.API;
-import io.vavr.control.Either;
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;
@@ -23,13 +22,8 @@ public class CompanyFinderService implements CompanyFinderApi {
     private final CompanyPersistenceSpi spi;
 
     @Override
-    public Either<ApplicationError, Company> findById(Long companyId) {
-        return spi.findById(companyId)
-                .onEmpty(() -> LOGGER.warning("Unable to found company with id : " + companyId))
-                .fold(
-                        () -> Left(new ApplicationError("No company", null, companyId, null)),
-                        API::Right
-                );
+    public Company findById(Long companyId) {
+        return spi.findById(companyId).get();
     }
 
     @Override

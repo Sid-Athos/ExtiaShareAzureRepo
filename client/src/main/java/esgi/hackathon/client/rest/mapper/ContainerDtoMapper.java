@@ -2,12 +2,11 @@ package esgi.hackathon.client.rest.mapper;
 
 
 import esgi.hackathon.client.rest.dto.AddContainerRequest;
-import esgi.hackathon.client.rest.dto.CompanyCreationRequest;
-import esgi.hackathon.client.rest.dto.CompanyDto;
 import esgi.hackathon.client.rest.dto.ContainerDto;
-import esgi.hackathon.domain.functional.model.Company;
 import esgi.hackathon.domain.functional.model.Container;
-import esgi.hackathon.domain.functional.model.StoredProduct;
+
+import java.util.stream.Collectors;
+
 
 import java.util.List;
 
@@ -17,8 +16,16 @@ public interface ContainerDtoMapper {
         return new ContainerDto(
                 container.getId(),
                 container.getSize(),
-                container.getStoredProductList().map(StoredProductDtoMapper::toDto).toJavaList()
-        );
+                container.getStoredProductList().stream().map(StoredProductDtoMapper::toDto).collect(Collectors.toList()));
+    }
+
+
+
+    static Container toDomain(ContainerDto container) {
+        return Container.builder()
+                .id(container.id())
+                .size(container.size())
+                .build();
     }
 
     static List<Container> containerCreationToDomain(List<AddContainerRequest> request) {

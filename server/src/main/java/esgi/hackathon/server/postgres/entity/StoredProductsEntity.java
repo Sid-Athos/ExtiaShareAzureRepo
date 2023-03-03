@@ -8,7 +8,6 @@ import java.util.Date;
 @Entity(name="STORED_PRODUCTS")
 @Getter
 @Setter
-@Builder
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class StoredProductsEntity {
 
@@ -35,5 +34,6 @@ public class StoredProductsEntity {
     @Column(nullable = false)
     private int size;
 
-
+    public StoredProductsEntity() {
+    }
 }

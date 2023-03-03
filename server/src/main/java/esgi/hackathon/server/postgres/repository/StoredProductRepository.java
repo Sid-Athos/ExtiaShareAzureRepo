@@ -13,5 +13,4 @@ public interface StoredProductRepository extends JpaRepository<StoredProductsEnt
 
     @Query("SELECT stock FROM STORED_PRODUCTS stock WHERE stock.container.company.id = :id")
     List<StoredProductsEntity> findAllByCompany(@Param("id") Long companyId);
-
 }

@@ -1,6 +1,11 @@
 package esgi.hackathon.bootstrap.config.domain;
 
 import esgi.hackathon.domain.functional.service.account.*;
+import esgi.hackathon.domain.functional.service.ContainersFinderService;
+import esgi.hackathon.domain.functional.service.StockCreatorService;
+import esgi.hackathon.domain.functional.service.account.AccountCreatorService;
+import esgi.hackathon.domain.functional.service.account.AccountDepositProductService;
+import esgi.hackathon.domain.functional.service.account.AccountFinderService;
 import esgi.hackathon.domain.functional.service.category.CategoryCreatorService;
 import esgi.hackathon.domain.functional.service.category.CategoryFinderService;
 import esgi.hackathon.domain.functional.service.company.*;
@@ -52,21 +57,20 @@ public class DomainConfiguration {
     @Bean
     public StoredProductFinderApi storedProductFinderApi(StoredProductPersistenceSpi spi) { return new StoredProductFinderService(spi); }
 
-    @Bean AccountPointAdderApi accountPointAdderApi(AccountPersistenceSpi spi) {
-        return new AccountPointAdderService(spi);
-    }
-
-    @Bean
-    public AccountStoredProductTakerApi storedProductRemoverApi(
-            StoredProductPersistenceSpi spi,
-            AccountPointAdderApi api
-    ) {
-        return new AccountStoredProductTakerService(spi, api);
-    }
 
     @Bean
     public AccountNFCConnectionApi accountNFCConnectionApi(AccountPersistenceSpi spi) {
         return new AccountNFCConnectionService(spi);
+    }
+
+    @Bean
+    public ContainersFinderApi containersFinderApi(ContainersPersistenceSpi containersPersistenceSpi){
+        return new ContainersFinderService(containersPersistenceSpi);
+    }
+
+    @Bean
+    public StockCreatorApi stockCreatorApi(StockPersistenceSpi stockPersistenceSpi, AccountPersistenceSpi accountPersistenceSpi, ContainersPersistenceSpi containersPersistenceSpi, ProductPersistenceSpi productPersistenceSpi){
+        return new StockCreatorService(stockPersistenceSpi, accountPersistenceSpi, containersPersistenceSpi, productPersistenceSpi);
     }
 
 }

@@ -25,12 +25,8 @@ public class AccountStoredProductTakerService implements AccountStoredProductTak
 
     @Override
     public void takeStoredProduct(Long accountId, Long storedProductId) {
-        storedProductPersistenceSpi.findById(storedProductId)
-                .onEmpty(() -> LOGGER.warning("Stored product not found with id : " + storedProductId))
-                .fold(
-                        () -> Left(new ApplicationError("No stored product", null, storedProductId, null)),
-                        storedProduct -> doRecompenseAndSaveAndDelete(accountId, storedProduct)
-                );
+        var item = storedProductPersistenceSpi.findById(storedProductId);
+        doRecompenseAndSaveAndDelete(accountId, item);
     }
 
     private Either<ApplicationError, Account> doRecompenseAndSaveAndDelete(Long accountId, StoredProduct storedProduct) {

@@ -24,7 +24,6 @@ public class AccountResource {
     private final AccountNFCConnectionApi accountNFCConnectionApi;
     private final AccountFinderApi accountFinderApi;
     private final AccountDepositProductApi accountDepositProductApi;
-    private final AccountStoredProductTakerApi accountStoredProductTakerApi;
 
     @PostMapping(path = "/find")
     public Option<AccountDto> find(@RequestBody AccountFindRequest request) {
@@ -38,10 +37,6 @@ public class AccountResource {
         accountDepositProductApi.deposit(accountId, ProductDtoMapper.productCreationToDomain(request), request.containerId());
     }
 
-    @DeleteMapping(path = "/{account_id}/take/")
-    public void take(@PathVariable("account_id") Long accountId, @RequestBody AccountTakeProductRequest request) {
-        accountStoredProductTakerApi.takeStoredProduct(accountId, request.storedProductId());
-    }
 
     @GetMapping(path = "/findByMail/{mailAddress}")
     public Option<AccountDto> connect(@PathVariable("mailAddress") String mailAddress){

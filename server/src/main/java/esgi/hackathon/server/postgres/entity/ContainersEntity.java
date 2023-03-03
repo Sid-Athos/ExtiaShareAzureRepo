@@ -1,9 +1,6 @@
 package esgi.hackathon.server.postgres.entity;
 
-import lombok.Builder;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.List;
@@ -11,8 +8,8 @@ import java.util.List;
 @Entity(name="CONTAINERS")
 @Getter
 @Setter
-@Builder
-
+@NoArgsConstructor
+@AllArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class ContainersEntity {
 
@@ -22,9 +19,9 @@ public class ContainersEntity {
     private Long id;
 
     @Column(nullable = false)
-    private int size;
+    private Integer size;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "container")
     private List<StoredProductsEntity> productsInContainer;
 
     @ManyToOne

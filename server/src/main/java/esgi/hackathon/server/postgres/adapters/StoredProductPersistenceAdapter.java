@@ -11,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -33,17 +34,8 @@ public class StoredProductPersistenceAdapter implements StoredProductPersistence
     }
 
     @Override
-    public Either<ApplicationError, StoredProduct> save(StoredProduct o) {
-        return null;
+    public StoredProduct findById(Long storedProductId) {
+        return StoredProductEntityMapper.toDomain(repository.findById(storedProductId).orElseThrow());
     }
 
-    @Override
-    public List<StoredProduct> findAll() {
-        return null;
-    }
-
-    @Override
-    public Option<StoredProduct> findById(Long aLong) {
-        return null;
-    }
 }

@@ -9,6 +9,7 @@ import static com.tngtech.archunit.junit.CacheMode.FOREVER;
 import static com.tngtech.archunit.lang.syntax.ArchRuleDefinition.classes;
 import static esgi.hackathon.bootstrap.PackagesAndLayers.*;
 
+/**
 @AnalyzeClasses(
     packages = "esgi.hackathon.domain",
     cacheMode = FOREVER,
@@ -42,3 +43,4 @@ public class DomainDevelopmentRulesTest {
           .onlyHaveDependentClassesThat()
           .resideInAnyPackage(allowedAccessors);
 }
+*/

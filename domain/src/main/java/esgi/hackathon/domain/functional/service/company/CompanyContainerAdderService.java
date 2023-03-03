@@ -23,13 +23,10 @@ public class CompanyContainerAdderService implements CompanyContainerAdderApi {
     private final CompanyPersistenceSpi spi;
 
     @Override
-    public Either<ApplicationError, Company> addContainer(Long companyId, List<Container> containers) {
-        return spi.findById(companyId)
-                .onEmpty(() -> LOGGER.warning("Unable to found company with id : " + companyId))
-                .fold(
-                        () -> Left(new ApplicationError("No company", null, companyId, null)),
-                        company -> verifyAppendAndSave(company, containers)
-                );
+    public Company addContainer(Long companyId, List<Container> containers) {
+        var company =  spi.findById(companyId).orElseThrow(() -> new RuntimeException("No company with id " + companyId));
+         verifyAppendAndSave(company, containers);
+         return company;
     }
 
     private Either<ApplicationError, Company> verifyAppendAndSave(Company company, List<Container> containers) {
@@ -44,4 +41,5 @@ public class CompanyContainerAdderService implements CompanyContainerAdderApi {
     private Either<ApplicationError, Company> appendAndSave(Company company, List<Container> containers) {
         return spi.save(company.withContainerList(company.getContainerList().pushAll(containers)));
     }
+
 }

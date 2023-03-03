@@ -13,7 +13,7 @@ public class Account {
     Long id;
 
     @With
-    int[] idNFC;
+    String idNFC;
 
     @With
     String mailAddress;
@@ -24,9 +24,8 @@ public class Account {
     @With
     String logo;
 
-    @Builder.Default
     @With
-    int score = 0;
+    int score;
 
     Company company;
 

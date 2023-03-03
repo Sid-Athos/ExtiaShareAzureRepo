@@ -10,7 +10,7 @@ import java.util.List;
 
 public interface CompanyFinderApi {
 
-    Either<ApplicationError, Company> findById(Long id);
+    Company findById(Long id);
 
     List<Company> findAll();
 

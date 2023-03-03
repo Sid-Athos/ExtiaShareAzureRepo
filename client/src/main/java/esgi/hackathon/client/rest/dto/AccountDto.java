@@ -9,8 +9,10 @@ import static com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility.ANY;
 @JsonAutoDetect(fieldVisibility = ANY)
 public record AccountDto(
         Long id,
-        int[] idNFC,
+        String idNFC,
         String mailAddress,
+        String password,
+
         String logo,
         int score,
         CompanyDto company
