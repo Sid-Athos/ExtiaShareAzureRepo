@@ -32,6 +32,9 @@ public class StockCreatorService implements StockCreatorApi {
     public void addProductInStock(StoredProduct storedProduct) {
         var userToUpdate = accountPersistenceSpi.findById(storedProduct.getAccount().getId()).orElseThrow(() -> new RuntimeException("Account doesn't exist"));
         var container = containersPersistenceSpi.findWithEnoughSpace(storedProduct.getSize(), userToUpdate.getCompany().getId());
+        if(container == null){
+            throw new RuntimeException("No available containers");
+        }
         var productToAdd = productPersistenceSpi.findByName(storedProduct.getProduct().getName());
         if(productToAdd.isEmpty()){
             productToAdd = productPersistenceSpi.save(storedProduct.getProduct()).toJavaOptional();
