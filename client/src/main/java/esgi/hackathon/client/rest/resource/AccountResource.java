@@ -7,6 +7,7 @@ import esgi.hackathon.domain.ApplicationError;
 import esgi.hackathon.domain.functional.model.Account;
 import esgi.hackathon.domain.ports.in.AccountDepositProductApi;
 import esgi.hackathon.domain.ports.in.AccountFinderApi;
+import esgi.hackathon.domain.ports.in.AccountNFCConnectionApi;
 import esgi.hackathon.domain.ports.in.AccountStoredProductTakerApi;
 import io.vavr.control.Either;
 import io.vavr.control.Option;
@@ -20,6 +21,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping(path = "/account")
 public class AccountResource {
 
+    private final AccountNFCConnectionApi accountNFCConnectionApi;
     private final AccountFinderApi accountFinderApi;
     private final AccountDepositProductApi accountDepositProductApi;
     private final AccountStoredProductTakerApi accountStoredProductTakerApi;
@@ -48,6 +50,12 @@ public class AccountResource {
                 .map(AccountDtoMapper::toDto);
     }
 
+    @PostMapping(path = "/connection_nfc")
+    public Option<AccountDto> connectionByNFC(@RequestBody AccountNFCConnectionRequest request) {
+        return accountNFCConnectionApi
+                .connect(request.idNFC())
+                .map(AccountDtoMapper::toDto);
+    }
 
 
 }

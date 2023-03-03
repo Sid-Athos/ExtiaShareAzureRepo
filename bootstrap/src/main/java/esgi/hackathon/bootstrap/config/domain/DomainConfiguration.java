@@ -64,4 +64,9 @@ public class DomainConfiguration {
         return new AccountStoredProductTakerService(spi, api);
     }
 
+    @Bean
+    public AccountNFCConnectionApi accountNFCConnectionApi(AccountPersistenceSpi spi) {
+        return new AccountNFCConnectionService(spi);
+    }
+
 }

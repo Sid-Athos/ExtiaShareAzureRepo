@@ -12,9 +12,8 @@ public class Account {
 
     Long id;
 
-    @Builder.Default
     @With
-    String idNFC = UUID.randomUUID().toString();
+    int[] idNFC;
 
     @With
     String mailAddress;
