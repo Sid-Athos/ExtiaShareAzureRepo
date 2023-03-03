@@ -5,6 +5,8 @@ import esgi.hackathon.client.rest.dto.AddContainerRequest;
 import esgi.hackathon.client.rest.dto.ContainerDto;
 import esgi.hackathon.domain.functional.model.Container;
 
+import java.util.stream.Collectors;
+
 
 public interface ContainerDtoMapper {
 
@@ -12,9 +14,10 @@ public interface ContainerDtoMapper {
         return new ContainerDto(
                 container.getId(),
                 container.getSize(),
-                container.getStoredProductList().map(StoredProductDtoMapper::toDto).toJavaList()
-        );
+                container.getStoredProductList().stream().map(StoredProductDtoMapper::toDto).collect(Collectors.toList()));
     }
+
+
 
     static Container toDomain(ContainerDto container) {
         return Container.builder()
